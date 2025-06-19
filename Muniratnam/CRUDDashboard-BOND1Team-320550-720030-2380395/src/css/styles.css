@@ -1,0 +1,40 @@
+/* Main Styles for CRUD Dashboard */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.stats-card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+table th {
+    cursor: pointer;
+}
+
+.low-stock {
+    background-color: #fff3cd !important; /* Yellow background for low stock */
+}
+
+.out-of-stock {
+    background-color: #f8d7da !important; /* Red background for out of stock */
+}
+
+.action-btn {
+    margin: 0 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 20px;
+    }
+}

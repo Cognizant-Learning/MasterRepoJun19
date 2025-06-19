@@ -1,0 +1,111 @@
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+  padding: 15px;
+  position: relative;
+  height: calc(100% - 70px);
+  overflow: auto;
+}
+
+.metric-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.metric-label {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.metric-change {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.chart-container {
+  height: 150px;
+  margin-top: 10px;
+}
+
+.chart-placeholder {
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.chart-placeholder p {
+  margin: 5px 0;
+}
+
+.chart-placeholder .small {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.activity-list {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.activity-info {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.8rem;
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deposit {
+  color: green;
+}
+
+.withdrawal {
+  color: red;
+}
+
+.transfer {
+  color: blue;
+}
+
+.alert {
+  color: orange;
+}

@@ -1,0 +1,4 @@
+com\inventory\service\InventoryServiceTest.class
+com\inventory\repository\InventoryRepositoryTest.class
+com\inventory\controller\InventoryControllerTest.class
+com\inventory\model\InventoryItemTest.class

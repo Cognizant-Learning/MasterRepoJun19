@@ -1,0 +1,71 @@
+# Spring Boot specific .gitignore
+
+# Build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven specific
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# STS/Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Spring Boot Specific
+application-*.yml
+application-*.properties
+!application.yml
+!application.properties
+!application-example.yml
+!application-example.properties
+
+# Logs
+logs/
+*.log
+
+# H2 Database files
+*.mv.db
+*.trace.db
+*.h2.db
+
+# Local configuration file (as per Spring Boot docs)
+config/application-local.properties

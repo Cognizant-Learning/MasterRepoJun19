@@ -1,0 +1,21 @@
+{
+  "name": "pharmacy-dashboard",
+  "version": "1.0.0",
+  "description": "Pharmacy Inventory Management Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Please run frontend and backend separately. See README.md for instructions.\"",
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "mock-server": "node mock-server.js"
+  },
+  "keywords": [
+    "pharmacy",
+    "inventory",
+    "dashboard",
+    "hackathon"
+  ],
+  "author": "Team Alpha",
+  "license": "ISC"
+}

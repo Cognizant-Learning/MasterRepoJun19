@@ -1,0 +1,62 @@
+.list-container {
+  padding: 20px 0;
+  position: relative;
+}
+
+table {
+  width: 100%;
+  background-color: #f0f8f0 !important; /* Light green table background */
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: #a8d5a8 !important; /* Darker green for header */
+}
+
+.mdc-data-table__row:hover {
+  background-color: #d0ecb7 !important; /* Light green highlight on row hover */
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.status-active {
+  color: green;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 2px 8px;
+  background-color: rgba(0, 128, 0, 0.1);
+}
+
+.status-inactive {
+  color: red;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 2px 8px;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  margin-top: 20px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #666;
+}

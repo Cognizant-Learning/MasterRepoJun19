@@ -1,0 +1,38 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <div class="auth-header">
+      <h1>Banking System</h1>
+      <p>Login to your account</p>
+    </div>
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter your username">
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Enter your password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <mat-error>{{ errorMessage }}</mat-error>
+      </div>
+      
+      <div class="auth-actions">
+        <span></span> <!-- Spacer -->
+        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid || loading">
+          <mat-spinner *ngIf="loading" [diameter]="24"></mat-spinner>
+          <span *ngIf="!loading">Login</span>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

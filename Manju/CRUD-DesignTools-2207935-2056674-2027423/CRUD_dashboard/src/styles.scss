@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100dvh;
+  width: 100dvw;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+  min-width: 100dvw;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background: #f6f8fa;
+}
+
+#root, app-root, .main, .dashboard {
+  min-height: 100dvh;
+  min-width: 100dvw;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100dvw;
+  min-height: 100dvh;
+  padding: 2rem 0 0 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    padding: 1rem 0 0 0;
+  }
+}

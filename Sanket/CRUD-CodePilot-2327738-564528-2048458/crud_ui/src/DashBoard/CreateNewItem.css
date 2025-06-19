@@ -1,0 +1,152 @@
+/*
+  Modern, user-friendly UI for Create/Edit Item and Dashboard
+  - Consistent card style, spacing, and color palette
+  - Responsive and accessible
+  - Enhanced button and input styles
+*/
+body, html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8fafc;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #222;
+  overflow-x: hidden;
+}
+.create-item-container {
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  padding: 48px 0 28px 0;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+}
+.create-item-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.create-item-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #1976d2;
+  margin-bottom: 2px;
+}
+.create-item-form input[type="text"],
+.create-item-form input[type="number"],
+.create-item-form input[type="file"] {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1.5px solid #b6c6e3;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border 0.2s;
+}
+.create-item-form input:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
+  background: #e3e9f7;
+}
+.create-item-form button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+}
+.create-item-form button:hover {
+  background: #125ea2;
+  box-shadow: 0 4px 16px rgba(25,118,210,0.13);
+}
+.create-item-form input[type="file"] {
+  background: #fff;
+  border: none;
+  padding: 0;
+}
+.create-item-form input[type="file"]::-webkit-file-upload-button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.create-item-form input[type="file"]:hover::-webkit-file-upload-button {
+  background: #125ea2;
+}
+.create-item-form input[type="file"]::-ms-browse {
+  background: #1976d2;
+  color: #fff;
+  border-radius: 6px;
+}
+.create-item-form input[type="file"]:focus {
+  outline: none;
+}
+.create-item-form input[readonly] {
+  background: #f5f5f5;
+  color: #888;
+}
+.create-item-form .form-row {
+  display: flex;
+  gap: 12px;
+}
+.create-item-form .form-row > * {
+  flex: 1;
+}
+.create-item-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .create-item-container {
+    max-width: 98vw;
+    padding: 16px 6vw;
+  }
+  .create-item-form label {
+    font-size: 0.98rem;
+  }
+  .create-item-form input[type="text"],
+  .create-item-form input[type="number"],
+  .create-item-form input[type="file"] {
+    font-size: 0.98rem;
+    padding: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .create-item-container {
+    padding: 4px 2vw;
+  }
+  .create-item-form label {
+    font-size: 0.95rem;
+  }
+  .create-item-form input[type="text"],
+  .create-item-form input[type="number"],
+  .create-item-form input[type="file"] {
+    font-size: 0.95rem;
+    padding: 6px;
+  }
+  .create-item-form button {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+}
