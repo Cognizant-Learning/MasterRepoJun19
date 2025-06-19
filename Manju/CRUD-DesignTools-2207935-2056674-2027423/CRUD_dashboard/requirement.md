@@ -76,7 +76,7 @@
 - search bar width should 80%, delete selected should be same color of other buttons
 - update search functionality with name, sku and category
 - give some relistic names to "name"
-
+- add test cases as well for ts files
 
 
 
