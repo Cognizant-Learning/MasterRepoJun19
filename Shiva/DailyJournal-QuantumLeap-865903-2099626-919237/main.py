@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from controller import (
+from src.backend.controller import (
     users_controller,
     tags_controller,
     moods_controller,
@@ -8,14 +8,7 @@ from controller import (
     auth_jwt_controller,
 )
 
-app = FastAPI(
-    title="Daily Journal API",
-    description="API for Daily Journal Application",
-    version="1.0.0",
-    docs_url="/docs",      # Swagger UI
-    redoc_url="/redoc",    # ReDoc UI
-    openapi_url="/openapi.json"
-)
+app = FastAPI()
 
 app.include_router(users_controller.router)
 app.include_router(tags_controller.router)
@@ -23,8 +16,3 @@ app.include_router(moods_controller.router)
 app.include_router(journals_controller.router)
 app.include_router(auth_controller.router)
 app.include_router(auth_jwt_controller.router)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=5959, reload=True)
-

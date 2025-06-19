@@ -177,9 +177,9 @@
   - Chart.js or D3.js for data visualization
   - Progressive Web App capabilities
 
-- **Backend**: Java Spring Boot
-  - Spring Security for authentication
-  - Spring Data JPA for database operations
+- **Backend**: Python fastAPI
+  -  Security for authentication
+  - database operations with MySQL
   - RESTful API design
   - JWT for stateless authentication
 
@@ -238,7 +238,7 @@
 ## Data Models
 
 ### User Model
-```java
+```python
 public class User {
     private Long id;
     private String username;
@@ -652,3 +652,36 @@ dailyjournal-backend/
 ```
 
 This technical design provides a comprehensive blueprint for implementing the Daily Journal & Mood Analyzer application using Java 21, Angular 20, MySQL, REST APIs, and Bootstrap.
+
+---
+
+## How to Run the FastAPI Backend (Local)
+
+1. **Install Python dependencies**  
+   Open a terminal in the project root and run:
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. **Configure MySQL**  
+   - Ensure MySQL is running.
+   - Database: `daily_journal`
+   - User: `root`
+   - Password: `pass@word1`
+   - Update `.env` if needed.
+
+3. **Create Database Tables**  
+   In the terminal, run Python and execute:
+   ```python
+   from model.models import create_tables
+   create_tables()
+   ```
+
+4. **Start the FastAPI server**  
+   From the `src/backend` directory, run:
+   ```
+   uvicorn main:app --reload
+   ```
+
+5. **Open API docs**  
+   Visit [http://localhost:8000/docs](http://localhost:8000/docs) in your browser.

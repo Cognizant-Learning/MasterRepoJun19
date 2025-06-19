@@ -1,0 +1,22 @@
+# Python cache and junk files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+.env/
+
+# Binary and build folders
+bin/
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# OS junk files
+.DS_Store
+Thumbs.db
