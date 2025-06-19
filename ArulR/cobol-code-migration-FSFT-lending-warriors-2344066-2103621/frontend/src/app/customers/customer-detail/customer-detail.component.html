@@ -1,0 +1,131 @@
+<div class="customer-detail-container">
+  <mat-card class="customer-detail-card">
+    <!-- Card Header -->
+    <mat-card-header>
+      <mat-card-title>
+        <div class="customer-detail-header">
+          <button mat-icon-button color="primary" (click)="goBack()" aria-label="Back">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <h1>Customer Details</h1>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="customer-detail-loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+    
+    <!-- Error Message -->
+    <div *ngIf="error" class="customer-detail-error">
+      {{ error }}
+    </div>
+
+    <!-- Customer Details -->
+    <mat-card-content *ngIf="customer && !isLoading">
+      <div class="customer-detail-content">
+        <!-- Customer ID and Status -->
+        <div class="customer-status-section">
+          <div class="customer-id">
+            <span class="label">Customer ID:</span>
+            <span class="value">{{ customer.customerId }}</span>
+          </div>
+          <div class="customer-status">
+            <span [ngClass]="getStatusClass()" class="status-badge">
+              {{ customer.status }}
+            </span>
+          </div>
+        </div>
+        
+        <!-- Personal Information -->
+        <mat-card class="detail-section">
+          <mat-card-header>
+            <mat-card-title>Personal Information</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <span class="label">First Name</span>
+                <span class="value">{{ customer.firstName }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Last Name</span>
+                <span class="value">{{ customer.lastName }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Email</span>
+                <span class="value">{{ customer.email }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Phone Number</span>
+                <span class="value">{{ customer.phoneNumber }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Date of Birth</span>
+                <span class="value">{{ customer.dateOfBirth | date:'longDate' }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+        <!-- Address Information -->
+        <mat-card class="detail-section">
+          <mat-card-header>
+            <mat-card-title>Address</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <span class="label">Street</span>
+                <span class="value">{{ customer.address.street }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">City</span>
+                <span class="value">{{ customer.address.city }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">State</span>
+                <span class="value">{{ customer.address.state }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Zip Code</span>
+                <span class="value">{{ customer.address.zipCode }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Country</span>
+                <span class="value">{{ customer.address.country }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+        <!-- Creation/Update Info -->
+        <mat-card class="detail-section">
+          <mat-card-content>
+            <div class="meta-info">
+              <div class="meta-item">
+                <span class="meta-label">Created:</span>
+                <span>{{ customer.createdAt | date:'medium' }}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Last Updated:</span>
+                <span>{{ customer.updatedAt | date:'medium' }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+    
+    <!-- Action Buttons -->
+    <mat-card-actions *ngIf="customer && !isLoading">
+      <button mat-raised-button color="primary" (click)="editCustomer()">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteCustomer()">
+        <mat-icon>delete</mat-icon> Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

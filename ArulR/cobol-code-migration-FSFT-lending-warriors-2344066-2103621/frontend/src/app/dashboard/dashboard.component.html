@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Banking System</mat-toolbar>    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/dashboard/customers">Customers</a>
+      <a mat-list-item routerLink="/dashboard/accounts">Accounts</a>
+      <a mat-list-item routerLink="/dashboard/transactions">Transactions</a>
+      <a mat-list-item routerLink="/dashboard/reports">Reports</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Banking System Dashboard</span>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <div class="user-menu-header" *ngIf="user">
+          <p class="user-name">{{ user.username }}</p>
+          <p class="user-email">{{ user.email }}</p>
+        </div>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    
+    <div class="dashboard-content">
+      <router-outlet></router-outlet>
+      
+      <!-- Placeholder content for the dashboard -->
+      <div class="dashboard-welcome" *ngIf="router.url === '/dashboard'">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Welcome to the Banking System</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>This is a placeholder dashboard for the banking system. The actual implementation will include:</p>
+            <ul>
+              <li>Account overview and management</li>
+              <li>Transaction history and new transaction creation</li>
+              <li>Financial reports and statements</li>
+              <li>User profile and settings</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
