@@ -1,0 +1,29 @@
+.activity-log-container {
+  height: 300px;
+  overflow-y: auto;
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .no-activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    color: #999;
+    
+    mat-icon {
+      font-size: 36px;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      margin: 0;
+    }
+  }
+}

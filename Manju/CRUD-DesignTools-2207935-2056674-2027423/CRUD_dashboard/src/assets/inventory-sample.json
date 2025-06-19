@@ -1,507 +1,778 @@
 [
   {
-    "name": "test",
-    "quantity": 3,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 2",
-    "quantity": 0,
-    "status": "Out of Stock"
-  },
-  {
-    "name": "Item 3",
-    "quantity": 3,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 4",
-    "quantity": 7,
-    "status": "In Stock"
-  },
-  {
-    "name": "Item 5",
-    "quantity": 1,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 6",
-    "quantity": 0,
-    "status": "Out of Stock"
-  },
-  {
-    "name": "Item 7",
+    "name": "Logitech Wireless Mouse",
+    "sku": "SKU-0007",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 15,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 8",
+    "name": "LEGO City Fire Truck",
+    "sku": "SKU-0008",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 9",
+    "name": "Hot Wheels Race Car",
+    "sku": "SKU-0009",
+    "category": "Toys",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 10",
+    "name": "IKEA Table Lamp",
+    "sku": "SKU-0010",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 11",
+    "name": "Hanes Cotton T-Shirt",
+    "sku": "SKU-0011",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 12",
+    "name": "Sony Bluetooth Headphones",
+    "sku": "SKU-0012",
+    "category": "Electronics",
+    "price": 15.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 13",
+    "name": "Barbie Dreamhouse",
+    "sku": "SKU-0013",
+    "category": "Toys",
+    "price": 9.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 14",
+    "name": "Philips Air Fryer",
+    "sku": "SKU-0014",
+    "category": "Home",
+    "price": 11.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 15",
+    "name": "Levi's 501 Jeans",
+    "sku": "SKU-0015",
+    "category": "Clothing",
+    "price": 7.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 16",
+    "name": "Samsung 32'' Monitor",
+    "sku": "SKU-0016",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 17",
+    "name": "Nerf Elite Blaster",
+    "sku": "SKU-0017",
+    "category": "Toys",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 18",
+    "name": "Dyson V8 Vacuum Cleaner",
+    "sku": "SKU-0018",
+    "category": "Home",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 19",
+    "name": "Nike Running Shoes",
+    "sku": "SKU-0019",
+    "category": "Clothing",
+    "price": 12.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 20",
+    "name": "Apple Magic Keyboard",
+    "sku": "SKU-0020",
+    "category": "Electronics",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 21",
+    "name": "Columbia Winter Jacket",
+    "sku": "SKU-0021",
+    "category": "Clothing",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 22",
+    "name": "Bose SoundLink Speaker",
+    "sku": "SKU-0022",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 23",
+    "name": "Play-Doh Modeling Compound",
+    "sku": "SKU-0023",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 24",
+    "name": "Oster Toaster Oven",
+    "sku": "SKU-0024",
+    "category": "Home",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 25",
+    "name": "Adidas Soccer Ball",
+    "sku": "SKU-0025",
+    "category": "Clothing",
+    "price": 12.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 26",
+    "name": "Canon EOS Rebel Camera",
+    "sku": "SKU-0026",
+    "category": "Electronics",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 27",
+    "name": "Instant Pot Duo",
+    "sku": "SKU-0027",
+    "category": "Home",
+    "price": 15.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 28",
+    "name": "Puma Basketball Shoes",
+    "sku": "SKU-0028",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 29",
+    "name": "LG 55'' 4K TV",
+    "sku": "SKU-0029",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 30",
+    "name": "Rubik's Cube",
+    "sku": "SKU-0030",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 31",
+    "name": "Dell XPS 13 Laptop",
+    "sku": "SKU-0031",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 32",
+    "name": "North Face Backpack",
+    "sku": "SKU-0032",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 33",
+    "name": "GoPro Hero 8",
+    "sku": "SKU-0033",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 34",
+    "name": "Sony PlayStation 5",
+    "sku": "SKU-0034",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 35",
+    "name": "Under Armour Hoodie",
+    "sku": "SKU-0035",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 36",
+    "name": "Microsoft Surface Pro 7",
+    "sku": "SKU-0036",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 37",
+    "name": "LEGO Star Wars Millennium Falcon",
+    "sku": "SKU-0037",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 38",
+    "name": "Calvin Klein Dress Shirt",
+    "sku": "SKU-0038",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 39",
+    "name": "Samsung Galaxy Buds",
+    "sku": "SKU-0039",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 40",
+    "name": "KitchenAid Stand Mixer",
+    "sku": "SKU-0040",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 41",
+    "name": "Reebok Classic Sneakers",
+    "sku": "SKU-0041",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 42",
+    "name": "JBL Flip 5 Speaker",
+    "sku": "SKU-0042",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 43",
+    "name": "Hot Wheels Track Set",
+    "sku": "SKU-0043",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 44",
+    "name": "Tommy Hilfiger Belt",
+    "sku": "SKU-0044",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 45",
+    "name": "Asus ROG Gaming Monitor",
+    "sku": "SKU-0045",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 46",
+    "name": "Breville Espresso Machine",
+    "sku": "SKU-0046",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 47",
+    "name": "Fossil Hybrid Smartwatch",
+    "sku": "SKU-0047",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 48",
+    "name": "Razer DeathAdder Mouse",
+    "sku": "SKU-0048",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 49",
+    "name": "Nerf Super Soaker",
+    "sku": "SKU-0049",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 12,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 50",
+    "name": "Vans Old Skool Sneakers",
+    "sku": "SKU-0050",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 51",
+    "name": "Logitech G502 Hero Mouse",
+    "sku": "SKU-0051",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 52",
+    "name": "Sony A7 III Camera",
+    "sku": "SKU-0052",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 53",
+    "name": "Puma Soccer Jersey",
+    "sku": "SKU-0053",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 54",
+    "name": "Bose QuietComfort 35 II",
+    "sku": "SKU-0054",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 55",
+    "name": "LEGO Harry Potter Hogwarts Castle",
+    "sku": "SKU-0055",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 56",
+    "name": "Adidas Tracksuit",
+    "sku": "SKU-0056",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 57",
+    "name": "Samsung Galaxy S21",
+    "sku": "SKU-0057",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 58",
+    "name": "Dyson Airwrap Styler",
+    "sku": "SKU-0058",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 59",
+    "name": "Calvin Klein Jeans",
+    "sku": "SKU-0059",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 60",
+    "name": "Apple iPhone 12",
+    "sku": "SKU-0060",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 61",
+    "name": "LEGO Technic Lamborghini",
+    "sku": "SKU-0061",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 62",
+    "name": "Tommy Hilfiger Hoodie",
+    "sku": "SKU-0062",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 63",
+    "name": "GoPro Max",
+    "sku": "SKU-0063",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 64",
+    "name": "Sony 65'' 4K TV",
+    "sku": "SKU-0064",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 65",
+    "name": "Under Armour Compression Shirt",
+    "sku": "SKU-0065",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 66",
+    "name": "Microsoft Xbox Series X",
+    "sku": "SKU-0066",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 67",
+    "name": "Nerf Rival Nemesis",
+    "sku": "SKU-0067",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 68",
+    "name": "Calvin Klein Sweater",
+    "sku": "SKU-0068",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 69",
+    "name": "Apple Watch Series 6",
+    "sku": "SKU-0069",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 70",
+    "name": "Instant Pot Ultra",
+    "sku": "SKU-0070",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 71",
+    "name": "Nike Air Max 270",
+    "sku": "SKU-0071",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 72",
+    "name": "Samsung Galaxy Tab S7",
+    "sku": "SKU-0072",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 73",
+    "name": "LEGO Creator Expert Roller Coaster",
+    "sku": "SKU-0073",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 74",
+    "name": "Adidas Originals Cap",
+    "sku": "SKU-0074",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 75",
+    "name": "Logitech C920 HD Webcam",
+    "sku": "SKU-0075",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 76",
+    "name": "KitchenAid Food Processor",
+    "sku": "SKU-0076",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 77",
+    "name": "Puma Running Shoes",
+    "sku": "SKU-0077",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 78",
+    "name": "Sony WH-1000XM4",
+    "sku": "SKU-0078",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 79",
+    "name": "LEGO Disney Castle",
+    "sku": "SKU-0079",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 12,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 80",
+    "name": "Calvin Klein Perfume",
+    "sku": "SKU-0080",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 81",
+    "name": "Apple iPad Air",
+    "sku": "SKU-0081",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 82",
+    "name": "Dyson Pure Cool Link",
+    "sku": "SKU-0082",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 83",
+    "name": "Puma Basketball",
+    "sku": "SKU-0083",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 84",
+    "name": "Bose Soundbar 700",
+    "sku": "SKU-0084",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 85",
+    "name": "LEGO Minecraft Creeper",
+    "sku": "SKU-0085",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 86",
+    "name": "Adidas Yoga Mat",
+    "sku": "SKU-0086",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 87",
+    "name": "Samsung Galaxy Note 20",
+    "sku": "SKU-0087",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 88",
+    "name": "Instant Pot Duo Crisp",
+    "sku": "SKU-0088",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 89",
+    "name": "Calvin Klein Wallet",
+    "sku": "SKU-0089",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 90",
+    "name": "Apple MacBook Air",
+    "sku": "SKU-0090",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 91",
+    "name": "LEGO Star Wars X-Wing Starfighter",
+    "sku": "SKU-0091",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 92",
+    "name": "Tommy Hilfiger Scarf",
+    "sku": "SKU-0092",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 93",
+    "name": "GoPro Hero 9 Black",
+    "sku": "SKU-0093",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 94",
+    "name": "Sony 75'' 4K TV",
+    "sku": "SKU-0094",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 95",
+    "name": "Under Armour Shorts",
+    "sku": "SKU-0095",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 96",
+    "name": "Microsoft Surface Laptop 3",
+    "sku": "SKU-0096",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
-    "name": "Item 97",
+    "name": "Nerf Fortnite AR-L Elite Dart Blaster",
+    "sku": "SKU-0097",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
-    "name": "Item 98",
+    "name": "Calvin Klein Socks",
+    "sku": "SKU-0098",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
-    "name": "Item 99",
+    "name": "Apple iPhone 13",
+    "sku": "SKU-0099",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 100",
+    "sku": "SKU-0100",
+    "category": "Toys",
+    "price": 11.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "test2",
+    "sku": "SKU-0101",
+    "category": "Electronics",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
+  },
+  {
+    "name": "test4",
+    "sku": "SKU-00056",
+    "category": "toys",
+    "price": 0,
+    "quantity": 0,
+    "selected": false
+  },
+  {
+    "name": "test7",
+    "sku": "SKU00078",
+    "category": "toys",
+    "price": 65,
+    "quantity": 6,
+    "selected": false
   }
 ]

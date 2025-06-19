@@ -1,0 +1,3 @@
+com\dailyjournal\pages\LoginPage.class
+com\dailyjournal\utils\WebDriverFactory.class
+com\dailyjournal\utils\ConfigReader.class

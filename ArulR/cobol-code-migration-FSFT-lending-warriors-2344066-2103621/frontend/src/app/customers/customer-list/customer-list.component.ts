@@ -4,10 +4,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, finalize, merge, startWith, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, finalize, startWith, switchMap } from 'rxjs/operators';
+import { of, merge } from 'rxjs';
 import { CustomerService } from '../../shared/services/customer/customer.service';
 import { Customer } from '../../shared/models/customer/customer.model';
+import { CustomerPage } from '../../shared/models/customer/customer-page.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -41,22 +42,22 @@ export class CustomerListComponent implements OnInit {
     
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-        startWith({}),
-        switchMap(() => {
+        startWith({}),        switchMap(() => {
           this.isLoading = true;
           return this.customerService.getCustomers(
             this.paginator.pageIndex,
             this.paginator.pageSize,
             `${this.sort.active},${this.sort.direction}`,
-            this.filterValue
-          ).pipe(catchError(() => {
-            this.error = 'Failed to fetch customers. Please try again later.';
-            return of(null);
-          }));
-        }),
+            this.filterValue          ).pipe(
+            catchError(() => {
+              this.error = 'Failed to fetch customers. Please try again later.';
+              return of(null);
+            })
+          );
+        }
+        ),
         finalize(() => this.isLoading = false)
-      )
-      .subscribe(data => {
+      )      .subscribe((data: CustomerPage | null) => {
         if (data) {
           this.error = '';
           this.dataSource.data = data.content;
@@ -71,7 +72,6 @@ export class CustomerListComponent implements OnInit {
     this.paginator.pageIndex = 0;
     this.loadCustomers();
   }
-
   loadCustomers() {
     this.isLoading = true;
     this.customerService.getCustomers(
@@ -82,7 +82,7 @@ export class CustomerListComponent implements OnInit {
     ).pipe(
       finalize(() => this.isLoading = false)
     ).subscribe({
-      next: (data) => {
+      next: (data: CustomerPage) => {
         this.dataSource.data = data.content;
         this.resultsLength = data.totalElements;
         this.error = '';

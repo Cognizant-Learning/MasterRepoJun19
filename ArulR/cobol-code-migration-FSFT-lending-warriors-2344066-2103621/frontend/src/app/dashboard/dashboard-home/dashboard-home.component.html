@@ -17,19 +17,19 @@
       <mat-card-content class="dashboard-card-content">
         <div [ngSwitch]="card.type">
           <!-- Account Balance Summary -->
-          <div *ngSwitchCase="'balance'" class="metric-content">
+          <!-- <div *ngSwitchCase="'balance'" class="metric-content">
             <div class="metric-value">{{ card.value | currency }}</div>
             <div class="metric-change" [ngClass]="{'positive': card.change > 0, 'negative': card.change < 0}">
               <mat-icon>{{ card.change > 0 ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
               {{ card.change }}% from last month
             </div>
-          </div>
+          </div> -->
           
           <!-- Transactions Summary -->
           <div *ngSwitchCase="'transactions'" class="metric-content">
             <div class="metric-value">{{ card.value }}</div>
-            <div class="metric-label">transactions this month</div>
-            <div class="chart-container">
+            <div class="metric-label">transactions this month</div>            <div class="chart-container">
+              <!-- Chart now displayed using NgCharts -->
               <canvas baseChart
                 [data]="transactionChartData"
                 [options]="chartOptions"

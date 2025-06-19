@@ -36,3 +36,7 @@ As a store manager, I want to see all my items in a central dashboard, be able t
 2. Create prompt.md to capture all the prompts used
 3. Create the application as per requirements.md make use of local sql connection with database engine 9409D70B617A56F wherever applicable
 4. Run npm install
+5. Create the database and tables as per the backend server.js
+6. This is "pure vibe coding" add few features like dark theme, fix accessibility issues
+7. Create unit test cases for the app.
+8. Add documentaion for the app created
