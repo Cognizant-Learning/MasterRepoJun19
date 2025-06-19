@@ -16,9 +16,8 @@ export class DashboardHomeComponent implements OnInit {
     { title: 'Recent Activity', cols: 1, rows: 1, type: 'activity' },
     { title: 'Quick Actions', cols: 1, rows: 1, type: 'actions' }
   ];
-
   // Transaction chart data
-  transactionChartData: ChartData = {
+  transactionChartData: ChartData<'bar'> = {
     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
     datasets: [
       {
