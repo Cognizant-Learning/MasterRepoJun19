@@ -1,0 +1,5 @@
+com\vibecoding\inventory\service\InventoryServiceTest.class
+com\vibecoding\inventory\exception\GlobalExceptionHandlerTest.class
+com\vibecoding\inventory\controller\InventoryControllerTest.class
+com\vibecoding\inventory\model\InventoryItemTest.class
+com\vibecoding\inventory\VibeCodingCrudDashboardApplicationTests.class

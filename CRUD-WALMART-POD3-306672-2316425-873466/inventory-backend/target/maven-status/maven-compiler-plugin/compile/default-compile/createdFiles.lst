@@ -1,0 +1,8 @@
+com\vibecoding\inventory\model\InventoryItem.class
+com\vibecoding\inventory\repository\InventoryRepository.class
+com\vibecoding\inventory\VibeCodingCrudDashboardApplication.class
+com\vibecoding\inventory\DataSeeder.class
+com\vibecoding\inventory\exception\ResourceNotFoundException.class
+com\vibecoding\inventory\controller\InventoryController.class
+com\vibecoding\inventory\exception\GlobalExceptionHandler.class
+com\vibecoding\inventory\service\InventoryService.class
