@@ -1,42 +1,188 @@
-# Prompt File
+# API Prompts for CRUD Dashboard
 
-This file is intended to provide guidance and context for the development of the VibeCoding-CRUD-Dashboard project. Refer to the projectbrief.md file for detailed instructions and requirements.
+## Category Endpoints
 
-# Prompts Used in Workspace - ASK prompt
-read and analyze the projectbrief.md file
+### Get All Categories
+```http
+GET /api/inventory/stock/categories
+```
+Response:
+```json
+[
+  {
+    "id": 1,
+    "name": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Furniture"
+  }
+]
+```
 
-# Prompts Used in Workspace - EDIT prompts
+### Get Category by ID
+```http
+GET /api/inventory/stock/categories/{id}
+```
+Response:
+```json
+{
+  "id": 1,
+  "name": "Electronics"
+}
+```
 
-## 1. Extract and distill the project brief into a comprehensive `requirements.md` file.
-- Objective: Create a detailed requirements document based on the project brief.
+### Create Category
+```http
+POST /api/inventory/stock/categories
+Content-Type: application/json
 
-## 2. Keep the backend as Java, frontend as React, database as MySQL, and JWT as authentication.
-- Objective: Update the technologies section in the requirements file.
+{
+  "name": "New Category"
+}
+```
+Response:
+```json
+{
+  "id": 3,
+  "name": "New Category"
+}
+```
 
-## 3. Create the usecases table and API endpoint URL details.
-- Objective: Add database schema and API endpoint details for use cases.
+### Update Category
+```http
+PUT /api/inventory/stock/categories/{id}
+Content-Type: application/json
 
-## 4. Create the CRUD endpoint URLs.
-- Objective: Define CRUD API endpoints for managing records.
+{
+  "name": "Updated Category"
+}
+```
+Response:
+```json
+{
+  "id": 1,
+  "name": "Updated Category"
+}
+```
 
-## 5. Rename the API as per the stock inventory naming convention.
-- Objective: Update API endpoint names to align with stock inventory conventions.
+### Delete Category
+```http
+DELETE /api/inventory/stock/categories/{id}
+```
 
-## 6. Include `stock` after `inventory` in the URL.
-- Objective: Modify API endpoint URLs to include `stock` after `inventory`.
+## Product Endpoints
 
-## 7. Remove stock inventory API details.
-- Objective: Remove the stock inventory API section from the requirements file.
+### Get All Products
+```http
+GET /api/inventory/stock/products
+```
+Response:
+```json
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "categoryId": 1,
+    "price": 1299.99,
+    "quantity": 15,
+    "description": "High-performance gaming laptop",
+    "image": "laptop.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Office Chair",
+    "categoryId": 2,
+    "price": 199.99,
+    "quantity": 30,
+    "description": "Ergonomic office chair",
+    "image": "chair.jpg"
+  }
+]
+```
 
-## 8. Create the UI requirements based on `projectbrief.md` and `requirements.md`.
-- Objective: Define UI requirements for the dashboard.
+### Get Product by ID
+```http
+GET /api/inventory/stock/products/{id}
+```
+Response:
+```json
+{
+  "id": 1,
+  "name": "Laptop",
+  "categoryId": 1,
+  "price": 1299.99,
+  "quantity": 15,
+  "description": "High-performance gaming laptop",
+  "image": "laptop.jpg"
+}
+```
 
-## 9. Create the test plan and test cases based on `projectbrief.md` and `requirements.md`.
-- Objective: Outline the test plan and test cases for the project.
+### Create Product
+```http
+POST /api/inventory/stock/products
+Content-Type: application/json
 
-## 10. Add all the prompts to `prompt.md` file which we used in this workspace.
-- Objective: Document all prompts used during the workspace session.
+{
+  "name": "New Product",
+  "categoryId": 1,
+  "price": 999.99,
+  "quantity": 10,
+  "description": "Product description",
+  "image": "product.jpg"
+}
+```
+Response:
+```json
+{
+  "id": 3,
+  "name": "New Product",
+  "categoryId": 1,
+  "price": 999.99,
+  "quantity": 10,
+  "description": "Product description",
+  "image": "product.jpg"
+}
+```
 
-## 11. Create front-end and back-end user stories based on `requirements.md` in the same file.
-- Objective: Add user stories for front-end and back-end functionality to the requirements file.
+### Update Product
+```http
+PUT /api/inventory/stock/products/{id}
+Content-Type: application/json
 
+{
+  "name": "Updated Product",
+  "categoryId": 1,
+  "price": 1099.99,
+  "quantity": 15,
+  "description": "Updated description",
+  "image": "updated.jpg"
+}
+```
+Response:
+```json
+{
+  "id": 1,
+  "name": "Updated Product",
+  "categoryId": 1,
+  "price": 1099.99,
+  "quantity": 15,
+  "description": "Updated description",
+  "image": "updated.jpg"
+}
+```
+
+### Delete Product
+```http
+DELETE /api/inventory/stock/products/{id}
+```
+
+## Database Access
+
+### H2 Console
+```
+URL: http://localhost:8080/h2-console
+JDBC URL: jdbc:h2:mem:testdb
+Username: sa
+Password: password
+```

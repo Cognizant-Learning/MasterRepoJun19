@@ -1,507 +1,778 @@
 [
   {
-    "name": "test",
-    "quantity": 3,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 2",
-    "quantity": 0,
-    "status": "Out of Stock"
-  },
-  {
-    "name": "Item 3",
-    "quantity": 3,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 4",
-    "quantity": 7,
-    "status": "In Stock"
-  },
-  {
-    "name": "Item 5",
-    "quantity": 1,
-    "status": "Low Stock"
-  },
-  {
-    "name": "Item 6",
-    "quantity": 0,
-    "status": "Out of Stock"
-  },
-  {
     "name": "Item 7",
+    "sku": "SKU-0007",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 15,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 8",
+    "sku": "SKU-0008",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 9",
+    "sku": "SKU-0009",
+    "category": "Toys",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 10",
+    "sku": "SKU-0010",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 11",
+    "sku": "SKU-0011",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 12",
+    "sku": "SKU-0012",
+    "category": "Electronics",
+    "price": 15.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 13",
+    "sku": "SKU-0013",
+    "category": "Toys",
+    "price": 9.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 14",
+    "sku": "SKU-0014",
+    "category": "Home",
+    "price": 11.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 15",
+    "sku": "SKU-0015",
+    "category": "Clothing",
+    "price": 7.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 16",
+    "sku": "SKU-0016",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 17",
+    "sku": "SKU-0017",
+    "category": "Toys",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 18",
+    "sku": "SKU-0018",
+    "category": "Home",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 19",
+    "sku": "SKU-0019",
+    "category": "Clothing",
+    "price": 12.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 20",
+    "sku": "SKU-0020",
+    "category": "Electronics",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 21",
+    "sku": "SKU-0021",
+    "category": "Clothing",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 22",
+    "sku": "SKU-0022",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 23",
+    "sku": "SKU-0023",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 24",
+    "sku": "SKU-0024",
+    "category": "Home",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 25",
+    "sku": "SKU-0025",
+    "category": "Clothing",
+    "price": 12.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 26",
+    "sku": "SKU-0026",
+    "category": "Electronics",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 27",
+    "sku": "SKU-0027",
+    "category": "Home",
+    "price": 15.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 28",
+    "sku": "SKU-0028",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 29",
+    "sku": "SKU-0029",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 30",
+    "sku": "SKU-0030",
+    "category": "Toys",
+    "price": 7.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 31",
+    "sku": "SKU-0031",
+    "category": "Electronics",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 32",
+    "sku": "SKU-0032",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 33",
+    "sku": "SKU-0033",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 34",
+    "sku": "SKU-0034",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 35",
+    "sku": "SKU-0035",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 36",
+    "sku": "SKU-0036",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 37",
+    "sku": "SKU-0037",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 38",
+    "sku": "SKU-0038",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 39",
+    "sku": "SKU-0039",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 40",
+    "sku": "SKU-0040",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 41",
+    "sku": "SKU-0041",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 42",
+    "sku": "SKU-0042",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 43",
+    "sku": "SKU-0043",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 44",
+    "sku": "SKU-0044",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 45",
+    "sku": "SKU-0045",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 46",
+    "sku": "SKU-0046",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 47",
+    "sku": "SKU-0047",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 48",
+    "sku": "SKU-0048",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 49",
+    "sku": "SKU-0049",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 12,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 50",
+    "sku": "SKU-0050",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 51",
+    "sku": "SKU-0051",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 52",
+    "sku": "SKU-0052",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 53",
+    "sku": "SKU-0053",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 54",
+    "sku": "SKU-0054",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 55",
+    "sku": "SKU-0055",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 56",
+    "sku": "SKU-0056",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 57",
+    "sku": "SKU-0057",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 58",
+    "sku": "SKU-0058",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 59",
+    "sku": "SKU-0059",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 60",
+    "sku": "SKU-0060",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 61",
+    "sku": "SKU-0061",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 62",
+    "sku": "SKU-0062",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 63",
+    "sku": "SKU-0063",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 64",
+    "sku": "SKU-0064",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 65",
+    "sku": "SKU-0065",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 66",
+    "sku": "SKU-0066",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 67",
+    "sku": "SKU-0067",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 68",
+    "sku": "SKU-0068",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 69",
+    "sku": "SKU-0069",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 70",
+    "sku": "SKU-0070",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 71",
+    "sku": "SKU-0071",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 72",
+    "sku": "SKU-0072",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 73",
+    "sku": "SKU-0073",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 9,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 74",
+    "sku": "SKU-0074",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 75",
+    "sku": "SKU-0075",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 76",
+    "sku": "SKU-0076",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 10,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 77",
+    "sku": "SKU-0077",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 78",
+    "sku": "SKU-0078",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 79",
+    "sku": "SKU-0079",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 12,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 80",
+    "sku": "SKU-0080",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 81",
+    "sku": "SKU-0081",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 82",
+    "sku": "SKU-0082",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 8,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 83",
+    "sku": "SKU-0083",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 84",
+    "sku": "SKU-0084",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 85",
+    "sku": "SKU-0085",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 11,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 86",
+    "sku": "SKU-0086",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 4,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 87",
+    "sku": "SKU-0087",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 88",
+    "sku": "SKU-0088",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 7,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 89",
+    "sku": "SKU-0089",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 90",
+    "sku": "SKU-0090",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 91",
+    "sku": "SKU-0091",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 13,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 92",
+    "sku": "SKU-0092",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 93",
+    "sku": "SKU-0093",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 94",
+    "sku": "SKU-0094",
+    "category": "Home",
+    "price": 12.99,
     "quantity": 6,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 95",
+    "sku": "SKU-0095",
+    "category": "Clothing",
+    "price": 9.99,
     "quantity": 3,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 96",
+    "sku": "SKU-0096",
+    "category": "Electronics",
+    "price": 11.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 97",
+    "sku": "SKU-0097",
+    "category": "Toys",
+    "price": 14.99,
     "quantity": 14,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "Item 98",
+    "sku": "SKU-0098",
+    "category": "Clothing",
+    "price": 8.99,
     "quantity": 1,
-    "status": "Low Stock"
+    "selected": false
   },
   {
     "name": "Item 99",
+    "sku": "SKU-0099",
+    "category": "Electronics",
+    "price": 10.99,
     "quantity": 0,
-    "status": "Out of Stock"
+    "selected": false
   },
   {
     "name": "Item 100",
+    "sku": "SKU-0100",
+    "category": "Toys",
+    "price": 11.99,
     "quantity": 5,
-    "status": "In Stock"
+    "selected": false
   },
   {
     "name": "test2",
+    "sku": "SKU-0101",
+    "category": "Electronics",
+    "price": 7.99,
     "quantity": 2,
-    "status": "Low Stock"
+    "selected": false
+  },
+  {
+    "name": "test4",
+    "sku": "SKU-00056",
+    "category": "toys",
+    "price": 0,
+    "quantity": 0,
+    "selected": false
+  },
+  {
+    "name": "test7",
+    "sku": "SKU00078",
+    "category": "toys",
+    "price": 65,
+    "quantity": 6,
+    "selected": false
   }
 ]

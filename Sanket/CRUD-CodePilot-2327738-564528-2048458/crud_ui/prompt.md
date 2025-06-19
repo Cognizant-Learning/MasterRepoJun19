@@ -11,24 +11,34 @@ Every growing business hits a wall: messy spreadsheets, lost notes, and zero vis
 ## MVP Features (Must-Haves)
 - **Dashboard View:**
   - Header with key stats: Total Unique Items, Items Low on Stock, Items Out of Stock
-  - Inventory Table: Clean, sortable, with columns for Name, SKU, Category, Price, Quantity
+  - Inventory Table: Clean, sortable, with columns for Image, Name, SKU, Category, Price, Quantity, Action
   - Real-time search & filter bar
+  - Table is always centered, fixed width, and does not fluctuate
+  - Table supports sorting by clicking on headers (except Image and Action)
+  - Table rows have alternating colors for readability
+  - Edit and Delete buttons are always next to each other, horizontally aligned, and the Action column is wide enough for both
 - **Core CRUD Functionality:**
   - Add new item (form or modal)
   - Edit item (per row)
   - Delete item (per row, with confirmation)
+  - Image upload and preview for each item
 - **Low Stock Alert:**
   - Visually highlight items below a threshold (e.g., 10 units)
+  - Low stock rows: light yellow background, dark yellow border
+  - Out of stock rows: light red background, dark red border
 
 ## Stretch Goals (Innovations)
 - Data visualization (bar or pie chart by category)
-- Image uploads for products
 - Bulk operations (batch delete)
 - Activity log (last 5-10 actions)
 
 ## Design Notes
 - Focus on speed, clarity, and ease of use
 - Modern, attractive UI
+- No gradients in UI; use solid colors
+- All components utilize full screen for UI
+- Responsive design for all components
+- Pagination shows active/inactive button design
 
 ## Open Questions / To-Do
 - Define the low stock threshold (default: 10?)
@@ -49,6 +59,16 @@ Every growing business hits a wall: messy spreadsheets, lost notes, and zero vis
 - Each item in the list has Edit and Delete buttons. Edit opens a form to update the item; Delete removes it after confirmation.
 - The Create Item form prevents duplicate product names and notifies the user if a duplicate is attempted.
 - All notifications use React Toastify for a modern, user-friendly experience.
+- Table supports sorting by clicking on headers (except Image and Action columns).
+- Table is always centered, fixed width, and does not fluctuate.
+- Table rows have alternating colors for readability.
+- Edit and Delete buttons are always next to each other, horizontally aligned, and the Action column is wide enough for both.
+- Image column shows a preview of the uploaded image for each item.
+- Low stock rows: light yellow background, dark yellow border. Out of stock rows: light red background, dark red border.
+- No gradients in UI; use solid colors only.
+- All components utilize full screen for UI.
+- Responsive design for all components.
+- Pagination shows active/inactive button design.
 
 ---
 
