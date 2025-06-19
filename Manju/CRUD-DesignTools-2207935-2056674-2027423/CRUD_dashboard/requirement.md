@@ -17,6 +17,7 @@
 - bulk delete functionality
 - download report
 - pagination
+- add unit test cases
 
 # Prompts and Feature Requests
 
@@ -76,7 +77,7 @@
 - search bar width should 80%, delete selected should be same color of other buttons
 - update search functionality with name, sku and category
 - give some relistic names to "name"
-
+- add test cases as well for ts files
 
 
 
