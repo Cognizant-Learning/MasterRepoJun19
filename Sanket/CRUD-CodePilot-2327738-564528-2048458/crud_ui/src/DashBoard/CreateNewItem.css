@@ -1,0 +1,77 @@
+.create-item-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.create-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.create-item-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.create-item-form input[type="text"],
+.create-item-form input[type="number"],
+.create-item-form input[type="file"] {
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.create-item-form button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+.create-item-form button:hover {
+  background: #125ea2;
+}
+
+/* Responsive Design for Tablet and Desktop */
+@media (max-width: 900px) {
+  .create-item-container {
+    max-width: 98vw;
+    padding: 12px;
+  }
+  .create-item-form label {
+    font-size: 0.98rem;
+  }
+  .create-item-form input[type="text"],
+  .create-item-form input[type="number"],
+  .create-item-form input[type="file"] {
+    font-size: 0.98rem;
+    padding: 7px;
+  }
+}
+
+@media (max-width: 600px) {
+  .create-item-container {
+    padding: 4px;
+  }
+  .create-item-form label {
+    font-size: 0.95rem;
+  }
+  .create-item-form input[type="text"],
+  .create-item-form input[type="number"],
+  .create-item-form input[type="file"] {
+    font-size: 0.95rem;
+    padding: 6px;
+  }
+  .create-item-form button {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+}
