@@ -1,0 +1,29 @@
+CREATE TABLE journal_entries (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    entry_text TEXT,
+    mood VARCHAR(50),
+    mood_intensity INT,
+    attachment_path VARCHAR(512)
+);
+
+CREATE TABLE journal_entry_tags (
+    journal_entry_id BIGINT NOT NULL,
+    tag VARCHAR(255),
+    CONSTRAINT fk_journal_entry
+        FOREIGN KEY (journal_entry_id)
+        REFERENCES journal_entries(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE users (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    name VARCHAR(255)
+);
+
+ALTER TABLE journal_entries
+MODIFY COLUMN date DATETIME NOT NULL;
+
+ALTER TABLE users
+ADD COLUMN profile_theme VARCHAR(255);
