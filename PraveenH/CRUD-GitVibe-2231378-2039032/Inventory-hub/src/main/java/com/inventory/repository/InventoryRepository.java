@@ -17,4 +17,6 @@ public interface InventoryRepository extends JpaRepository<InventoryItem, Long> 
     List<InventoryItem> findOutOfStockItems();
     
     List<InventoryItem> findByNameContainingIgnoreCaseOrSkuContainingIgnoreCase(String name, String sku);
+
+    InventoryItem findByName(String string);
 }
