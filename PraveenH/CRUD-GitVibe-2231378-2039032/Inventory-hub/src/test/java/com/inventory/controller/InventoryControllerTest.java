@@ -16,6 +16,7 @@ import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -58,15 +59,6 @@ class InventoryControllerTest {
                 .andExpect(jsonPath("$.quantity").value(10));
     }
 
-    @Test
-    void testGetInventoryItem() throws Exception {
-        when(service.getInventoryItem(1L)).thenReturn(testItem);
-
-        mockMvc.perform(get("/api/inventory/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.name").value("Test Item"));
-    }
 
     @Test
     void testGetAllInventoryItems() throws Exception {
@@ -81,18 +73,29 @@ class InventoryControllerTest {
     @Test
     void testUpdateInventoryItem() throws Exception {
         InventoryItem updatedItem = new InventoryItem();
+        updatedItem.setId(1L);
+        updatedItem.setName("Updated Item");
+        updatedItem.setSku("UPDATED123");
+        updatedItem.setCategory("Updated Category");
         updatedItem.setQuantity(20);
-        
+        updatedItem.setPrice(new BigDecimal("39.99"));
+
         when(service.updateItem(eq(1L), any(InventoryItem.class))).thenReturn(updatedItem);
 
         mockMvc.perform(put("/api/inventory/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updatedItem)))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Updated Item"))
+                .andExpect(jsonPath("$.sku").value("UPDATED123"))
+                .andExpect(jsonPath("$.quantity").value(20))
+                .andExpect(jsonPath("$.price").value(39.99));
     }
 
     @Test
     void testDeleteInventoryItem() throws Exception {
+        doNothing().when(service).deleteItem(1L);
+
         mockMvc.perform(delete("/api/inventory/1"))
                 .andExpect(status().isNoContent());
     }

@@ -75,8 +75,5 @@ public class InventoryService {
         return inventoryRepository.findOutOfStockItems();
     }
 
-    public Object getInventoryItem(long l) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInventoryItem'");
-    }
+
 }
