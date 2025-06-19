@@ -1,0 +1,65 @@
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+
+  <div class="stats-container">
+    <mat-card class="stats-card">
+      <mat-card-header>
+        <mat-card-title>Total Items</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{totalItems}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/list">View All</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="stats-card">
+      <mat-card-header>
+        <mat-card-title>Active Items</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{activeItems}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/list">View Active</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="stats-card">
+      <mat-card-header>
+        <mat-card-title>Inactive Items</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{inactiveItems}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/list">View Inactive</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <h2>Recent Items</h2>
+  
+  <div class="loading-message" *ngIf="isLoading">Loading...</div>
+  
+  <div class="recent-items" *ngIf="!isLoading && recentItems.length > 0">
+    <mat-card class="item-card" *ngFor="let item of recentItems">
+      <mat-card-header>
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>Status: {{item.status}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{item.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/view', item.id]">View</button>
+        <button mat-button [routerLink]="['/edit', item.id]">Edit</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="no-items" *ngIf="!isLoading && recentItems.length === 0">
+    <p>No items found. <a routerLink="/create">Create your first item</a>.</p>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+.customer-list-container {
+  position: relative;
+  overflow: auto;
+}
+
+.customer-list-filter {
+  padding: 8px 16px;
+}
+
+.customer-list-filter mat-form-field {
+  width: 100%;
+}
+
+.customer-list-loading,
+.customer-list-error {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.customer-list-error {
+  color: #f44336;
+  text-align: center;
+}
+
+.customer-list-table-container {
+  overflow: auto;
+  max-height: 600px;
+}
+
+table {
+  width: 100%;
+}
+
+.customer-row:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.status-active {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-inactive {
+  background-color: #f5f5f5;
+  color: #757575;
+}
+
+.status-suspended {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+th.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-column-customerId {
+  width: 10%;
+}
+
+.mat-column-name {
+  width: 20%;
+}
+
+.mat-column-email {
+  width: 25%;
+}
+
+.mat-column-phoneNumber {
+  width: 15%;
+}
+
+.mat-column-status {
+  width: 10%;
+}
+
+.mat-column-actions {
+  width: 15%;
+  text-align: right;
+}

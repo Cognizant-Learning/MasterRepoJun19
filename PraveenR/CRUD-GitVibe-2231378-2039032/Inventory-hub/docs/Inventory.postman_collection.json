@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "eee96d46-479b-4af1-b98f-c06a97ca393d",
+		"name": "Inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46023916"
+	},
+	"item": [
+		{
+			"name": "getInventoryById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/inventory/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create inventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Mechanical Keyboard\",\r\n        \"sku\": \"KB-002\",\r\n        \"category\": \"Computer Accessories\",\r\n        \"price\": 89.99,\r\n        \"quantity\": 30,\r\n        \"imageUrl\": \"https://example.com/images/mechanical-keyboard.jpg\",\r\n        \"lowStockThreshold\": 8\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/inventory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all inventory items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/inventory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update inventory",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "delete inventory",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
