@@ -1,0 +1,51 @@
+# Prompts and Feature Requests
+
+- create a dashboard where i can add an inventory to ther stock for central dashboard
+- add a delete functionality for the inventory to the stock for central dashboard
+- add validation to check if stock quantity is minmum 1 to add
+- show the alert if quantity is less than 1 while adding stock
+- add mandatory field validation for "Name" and "Quantity" and highlight the field with RED color when user clicks on add button
+- I want a custom error msg considering both fileds
+- validation msg should come in next line
+- only show the combined custom msg in new line, not beside button
+- remove individual field validation msg
+- add a edit functionality for the inventory to the stock for central dashboard
+- change save to update
+- all buttons should be in same row
+- if edit is clicked, delete button should be hidden
+- stock dropdown should not come up while editing also, based on the quantity updated per inventory, it should show updated value in the dashboard
+- before deleting, ask
+- update inventory should accept 0 also
+- beautify the UI
+- color of the button should be like APC.com
+- please apply professional look
+- Please restart Angular app
+- get full screen size
+- height and width should be according to the screen size
+- remove alert popup for quantity
+- add 100 items to the inventory
+- where did you store all 100 items?
+- create a sample json with 100 items and read from there
+- read and update inventory to json
+- fix the uncaughtException HttpErrorResponse error
+- '<pre>Cannot GET /assets/inventory-sample.json</pre>\n' + - fix this
+- add paginations for 10 items per page
+- when update any inventory, update in json as well
+- add search functionality and filter at the starting of the table
+- add all prompts in the prompts.md
+- add sorting in the table
+- check if "name" exists while adding new inventory. if exists show validation msg
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
