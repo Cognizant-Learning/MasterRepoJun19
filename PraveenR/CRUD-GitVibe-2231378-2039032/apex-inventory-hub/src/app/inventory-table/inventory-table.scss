@@ -1,0 +1,12 @@
+.low-stock {
+  background: #fffde7;
+}
+.out-of-stock {
+  background: #ffebee;
+}
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

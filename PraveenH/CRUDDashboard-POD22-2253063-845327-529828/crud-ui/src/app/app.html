@@ -1,15 +1,22 @@
 <!-- CRUD Dashboard Application -->
 
-<header>
+<header *ngIf="showHeader">
   <mat-toolbar>
     <span>CRUD Dashboard</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/dashboard">Dashboard</button>
     <button mat-button routerLink="/list">List Items</button>
     <button mat-button routerLink="/create">Create New</button>
+    <span class="user-info" *ngIf="currentUser">
+      <mat-icon>person</mat-icon>
+      {{ currentUser.email }}
+    </span>
+    <button mat-button (click)="logout()" class="logout-button">
+      <mat-icon>exit_to_app</mat-icon> Logout
+    </button>
   </mat-toolbar>
 </header>
 
-<div class="container">
+<div [ngClass]="showHeader ? 'container' : 'auth-container'">
   <router-outlet></router-outlet>
 </div>

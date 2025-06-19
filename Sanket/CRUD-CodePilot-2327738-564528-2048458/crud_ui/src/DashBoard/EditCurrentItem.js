@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './CreateNewItem.css';
+import './EditCurrentItem.css';
 
 function EditCurrentItem({ items, setItems }) {
   const { id } = useParams();
@@ -77,7 +77,7 @@ function EditCurrentItem({ items, setItems }) {
         </label>
         <label>
           SKU:
-          <input type="text" name="sku" value={form.sku} onChange={handleChange} required />
+          <input type="text" name="sku" value={form.sku} readOnly />
         </label>
         <label>
           Category:
