@@ -1,0 +1,48 @@
+<div class="create-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Create New Item</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter name">
+          <mat-error *ngIf="dataForm.get('name')?.hasError('required')">
+            Name is required
+          </mat-error>
+          <mat-error *ngIf="dataForm.get('name')?.hasError('minlength')">
+            Name must be at least 3 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" rows="4" placeholder="Enter description"></textarea>
+          <mat-error *ngIf="dataForm.get('description')?.hasError('required')">
+            Description is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="active">Active</mat-option>
+            <mat-option value="inactive">Inactive</mat-option>
+          </mat-select>
+          <mat-error *ngIf="dataForm.get('status')?.hasError('required')">
+            Status is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+          <button type="button" mat-stroked-button routerLink="/list">Cancel</button>
+          <button type="submit" mat-raised-button color="primary" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Saving...' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
