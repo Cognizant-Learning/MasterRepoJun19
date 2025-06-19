@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "journal-magic": {
+      "architect": {
+        "serve": {
+          "options": {
+            "browserTarget": "journal-magic:build",
+            "proxyConfig": "src/proxy.conf.json"
+          }
+        }
+      }
+    }
+  }
+}
