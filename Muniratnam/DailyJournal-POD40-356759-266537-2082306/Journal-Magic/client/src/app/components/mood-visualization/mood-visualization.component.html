@@ -1,0 +1,62 @@
+<div class="visualization-container">
+  <h2>Mood Analysis</h2>
+  
+  <div class="timeframe-selector">
+    <button [class.active]="timeframe === 'week'" (click)="changeTimeframe('week')">Past Week</button>
+    <button [class.active]="timeframe === 'month'" (click)="changeTimeframe('month')">Past Month</button>
+    <button [class.active]="timeframe === 'year'" (click)="changeTimeframe('year')">Past Year</button>
+  </div>
+  
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Loading mood analysis...</p>
+  </div>
+  
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+  
+  <div *ngIf="!loading && !error && moodAnalysis" class="visualization-content">
+    <div class="mood-summary">
+      <div class="average-mood">
+        <h3>Average Mood</h3>
+        <div class="mood-value">
+          <span class="value">{{ moodAnalysis.averageMood.toFixed(1) }}</span>
+          <span class="emoji">
+            {{ moodAnalysis.averageMood >= 4.5 ? '🤩' : 
+               moodAnalysis.averageMood >= 3.5 ? '😊' : 
+               moodAnalysis.averageMood >= 2.5 ? '😐' : 
+               moodAnalysis.averageMood >= 1.5 ? '😔' : '😢' }}
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mood-trend">
+      <h3>Mood Trend</h3>
+      <div class="chart-container">
+        <canvas #moodTrendCanvas></canvas>
+      </div>
+    </div>
+    
+    <div class="activity-correlation" *ngIf="moodAnalysis.commonActivities.length > 0">
+      <h3>Activity Impact on Mood</h3>
+      <div class="chart-container">
+        <canvas #activityCorrelationCanvas></canvas>
+      </div>
+    </div>
+    
+    <div class="insights">
+      <h3>Insights</h3>
+      <ul>
+        <li *ngFor="let insight of moodAnalysis.insights">
+          {{ insight }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading && !error && (!moodAnalysis || moodAnalysis.moodTrend.length === 0)" class="no-data">
+    <p>Not enough data to generate mood analysis. Add more journal entries to see your mood patterns.</p>
+  </div>
+</div>

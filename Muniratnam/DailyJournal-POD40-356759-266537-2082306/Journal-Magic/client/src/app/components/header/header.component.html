@@ -1,0 +1,33 @@
+<header class="app-header">
+  <div class="logo">
+    <a routerLink="/">
+      <img src="assets/images/journal-magic-logo.png" alt="Journal Magic">
+      <span>Journal Magic</span>
+    </a>
+  </div>
+
+  <nav class="main-nav" *ngIf="currentUser">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>
+      <li><a routerLink="/journal" routerLinkActive="active">Journal</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-controls" *ngIf="currentUser">
+    <button class="theme-toggle" (click)="toggleDarkMode()" title="Toggle dark mode">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+    
+    <div class="user-menu">
+      <button class="user-button">
+        <span class="user-name">{{ currentUser.firstName }}</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="dropdown-menu">
+        <a routerLink="/profile">My Profile</a>
+        <a routerLink="/settings">Settings</a>
+        <a href="#" (click)="$event.preventDefault(); logout()">Log out</a>
+      </div>
+    </div>
+  </div>
+</header>

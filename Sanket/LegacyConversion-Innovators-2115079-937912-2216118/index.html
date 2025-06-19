@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Entry screen overlay -->
+    <div id="entry-screen" class="entry-screen">
+        <div class="entry-content">
+            <h1>Welcome to Account Management System</h1>
+            <p>Legacy COBOL Application Migrated to Modern JavaScript</p>
+            <button id="start-btn" class="btn start-btn">Start Application</button>
+        </div>
+    </div>
+      <div class="container">
+        <header>
+            <h1>Account Management System</h1>
+        </header>
+        
+        <div class="account-dashboard">
+            <div class="balance-display">
+                <h2>Current Balance</h2>
+                <div id="balance-amount" class="balance-amount" style="display: none;">$0.00</div>
+                <button id="view-balance-btn" class="btn view-balance">View Current Balance</button>
+            </div>
+            
+            <div class="transaction-form">
+                <h2>Transaction</h2>
+                <div class="input-group">
+                    <label for="amount">Amount ($):</label>
+                    <input type="number" id="amount" min="0.01" step="0.01" placeholder="0.00">
+                </div>
+                <div class="button-group">
+                    <button id="credit-btn" class="btn primary">Credit Account</button>
+                    <button id="debit-btn" class="btn secondary">Debit Account</button>
+                </div>                <div id="message" class="message"></div>
+                <div class="exit-button-container">
+                    <button id="exit-btn" class="btn exit">Exit Application</button>
+                </div>
+            </div>
+            
+            <div class="transaction-history">
+                <h2>Transaction History</h2>
+                <div class="history-header">
+                    <button id="clear-history-btn" class="btn clear-history">Clear History</button>
+                </div>                <ul id="history-list" class="history-list">
+                    <li class="history-item empty">No transactions yet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="operations.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

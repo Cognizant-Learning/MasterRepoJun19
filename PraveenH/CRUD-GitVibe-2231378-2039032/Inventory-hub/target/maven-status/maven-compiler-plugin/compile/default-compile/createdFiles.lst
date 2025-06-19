@@ -1,0 +1,6 @@
+com\inventory\model\InventoryItem.class
+com\inventory\repository\InventoryRepository.class
+com\inventory\exception\GlobalExceptionHandler.class
+com\inventory\service\InventoryService.class
+com\inventory\InventoryApplication.class
+com\inventory\controller\InventoryController.class
