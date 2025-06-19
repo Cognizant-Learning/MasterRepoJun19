@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Cognizant-Learning/Vibecoding-cobol-code-migration#readme",
   "dependencies": {
     "@vitejs/plugin-react": "^4.5.2",
+    "bootstrap": "^5.3.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

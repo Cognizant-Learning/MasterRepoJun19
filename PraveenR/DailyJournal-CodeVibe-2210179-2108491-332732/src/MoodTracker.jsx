@@ -641,25 +641,34 @@ function MoodTracker({ entries, theme, darkMode, getMoodColor }) {  const [moodD
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Mood Distribution */}
+      </div>      {/* Mood Distribution - Apple Keynote Style */}
       <div style={{
-        background: theme.card,
-        borderRadius: 18,
-        padding: 20,
-        marginBottom: 24,
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        border: theme.border,
-        boxShadow: theme.shadow,
+        maxWidth: '1200px',
+        margin: '0 auto 40px auto',
+        padding: '0 5%',
       }}>
-        <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 16, color: theme.color }}>
-          Mood Distribution
-        </h4>
-        
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
-          {/* Distribution bars */}
+        <div style={{
+          background: darkMode ? 'rgba(20, 20, 22, 0.8)' : 'rgba(255, 255, 255, 0.9)',
+          borderRadius: '24px',
+          padding: '30px',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: darkMode 
+            ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset' 
+            : '0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.5) inset',
+        }}>
+          <h3 style={{ 
+            fontSize: '28px',
+            fontWeight: '700',
+            marginBottom: '30px',
+            color: darkMode ? '#ffffff' : '#000000',
+            textAlign: 'center',
+          }}>
+            Mood Distribution
+          </h3>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
+            {/* Distribution bars */}
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(value => {
             // Calculate percentage for this mood value
             const count = moodData.moodCounts[value] || 0;
@@ -728,9 +737,10 @@ function MoodTracker({ entries, theme, darkMode, getMoodColor }) {  const [moodD
         }}>
           <span>Very Unpleasant</span>
           <span>Very Pleasant</span>
-        </div>
+        </div>      </div>
       </div>
-        {/* Insights with Word Cloud */}
+      
+      {/* Insights with Word Cloud */}
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto 40px auto',
