@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS daily_journal;
+
+USE daily_journal;
+
+CREATE TABLE IF NOT EXISTS entries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
