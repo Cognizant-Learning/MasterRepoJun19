@@ -1,0 +1,133 @@
+{
+  "users": [
+    {
+      "id": "1750316538455",
+      "username": "testuser",
+      "email": "testuser@example.com",
+      "password": "$2b$10$EJF5ssiJG.87R9llLFsRGOhx2266.swlB93PhmWQ4vi0U/MTm1e/.",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "iPhone 15 Pro",
+      "price": "1199.99",
+      "description": "Apple 6.1-inch smartphone, 256GB, Silver"
+    },
+    {
+      "id": "2",
+      "name": "Samsung Galaxy S24",
+      "price": "999.99",
+      "description": "Samsung 6.2-inch smartphone, 128GB, Phantom Black"
+    },
+    {
+      "id": "3",
+      "name": "MacBook Air M3",
+      "price": "1499.99",
+      "description": "Apple 13-inch laptop, 16GB RAM, 512GB SSD"
+    },
+    {
+      "id": "4",
+      "name": "Dell XPS 13",
+      "price": "1299.99",
+      "description": "13.4-inch FHD+ laptop, 16GB RAM, 512GB SSD"
+    },
+    {
+      "id": "5",
+      "name": "Sony WH-1000XM5",
+      "price": "349.99",
+      "description": "Wireless Noise Cancelling Headphones"
+    },
+    {
+      "id": "6",
+      "name": "Bose QuietComfort Earbuds II",
+      "price": "279.99",
+      "description": "True Wireless Earbuds, Triple Black"
+    },
+    {
+      "id": "7",
+      "name": "Samsung 55\" QLED TV",
+      "price": "799.99",
+      "description": "4K UHD Smart TV, HDR, 120Hz"
+    },
+    {
+      "id": "8",
+      "name": "LG 65\" OLED TV",
+      "price": "1999.99",
+      "description": "4K UHD Smart OLED TV, Dolby Vision"
+    },
+    {
+      "id": "9",
+      "name": "iPad Pro 12.9",
+      "price": "1099.99",
+      "description": "Apple 12.9-inch tablet, 256GB, Wi-Fi"
+    },
+    {
+      "id": "10",
+      "name": "Amazon Kindle Paperwhite",
+      "price": "139.99",
+      "description": "6.8-inch e-reader, 16GB, Waterproof"
+    },
+    {
+      "id": "11",
+      "name": "GoPro HERO12 Black",
+      "price": "399.99",
+      "description": "Waterproof Action Camera, 5.3K60 UHD"
+    },
+    {
+      "id": "12",
+      "name": "Canon EOS R10",
+      "price": "979.99",
+      "description": "Mirrorless Camera, 24.2MP, 18-45mm Lens"
+    },
+    {
+      "id": "13",
+      "name": "Apple Watch Series 9",
+      "price": "429.99",
+      "description": "GPS, 45mm, Midnight Aluminum Case"
+    },
+    {
+      "id": "14",
+      "name": "Fitbit Charge 6",
+      "price": "159.99",
+      "description": "Fitness Tracker, Black/Graphite"
+    },
+    {
+      "id": "15",
+      "name": "JBL Flip 6",
+      "price": "129.99",
+      "description": "Portable Bluetooth Speaker, Blue"
+    },
+    {
+      "id": "16",
+      "name": "Anker PowerCore 20000",
+      "price": "49.99",
+      "description": "Portable Charger, 20000mAh, Black"
+    },
+    {
+      "id": "17",
+      "name": "Logitech MX Master 3S",
+      "price": "99.99",
+      "description": "Advanced Wireless Mouse, Graphite"
+    },
+    {
+      "id": "18",
+      "name": "Razer BlackWidow V4",
+      "price": "179.99",
+      "description": "Mechanical Gaming Keyboard, RGB"
+    },
+    {
+      "id": "19",
+      "name": "Google Pixel 8",
+      "price": "899.99",
+      "description": "Google 6.2-inch smartphone, 128GB, Obsidian"
+    },
+    {
+      "id": "20",
+      "name": "Microsoft Surface Laptop 5",
+      "price": "1399.99",
+      "description": "13.5-inch Touchscreen, 16GB RAM, 512GB SSD"
+    }
+  ]
+}

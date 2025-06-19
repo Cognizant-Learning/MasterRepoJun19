@@ -1,0 +1,35 @@
+1. Hi So I want to create a CRUD Dashboard Application, What are the basic checkpoints or features that needs to be present
+2. Can you understand this.
+3. are you able to read projectbrief.md
+4. Hi so I need you to create a CRUD Dashboard application based on given checkpoints below: Here are the basic checkpoints and features for a CRUD Dashboard Application:
+   ... (full checkpoint list)
+5. We need backend as well as well as front-end
+6. Yes sure
+7. Continue with #new workspace setup
+8. I have created an empty folder
+9. Yes
+10. Run the code to see output in browser
+11. What are the steps to validate register & login in postman
+12. backend server isn't running
+13. run front-end app
+14. run backend
+15. For the below backend request { ... }  I am 
+16. For below request { ... } I am getting a below response in postman { "error": "Operation `users.insertOne()` buffering timed out after 10000ms" }
+17. How to start that particular MongoDB server
+18. instead of using MongoDB, is it possible to implement DB in Localstorage as in an external JSON
+19. Sure please proceed
+20. so give me step by step procedure to run in postman
+21. So next steps run?
+22. Postman is working perfectly now how to run application
+23. Close all and restart
+24. Now lets create CRUD Dashboard using React Components. It can be any dashboard, it could be Shopping cart 
+25. For backend, I assume you use JSON similar to user details
+26. Yes
+27. lets start with add/edit form 
+28. Yes proceed and complete the remaining components and features required 
+29. Add some products in dashboard
+30. Yes
+31. The items that we adding in UI is not reflecting in UI
+32. Yes
+33. is it possible to store all the prompts that i gave so far till now from beginning in a file ?
+34. Yes do that and keep updating the new prompts in that file from now on
