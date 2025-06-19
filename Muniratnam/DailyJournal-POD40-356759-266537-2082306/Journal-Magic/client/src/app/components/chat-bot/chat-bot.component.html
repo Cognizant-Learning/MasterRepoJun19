@@ -1,0 +1,31 @@
+<div class="chat-container" [ngClass]="{'minimized': isMinimized}">
+  <div class="chat-header">
+    <h3>Journal Magic Assistant</h3>
+    <div class="controls">
+      <button (click)="toggleMinimize()">
+        <i class="fas" [ngClass]="isMinimized ? 'fa-expand' : 'fa-compress'"></i>
+      </button>
+      <button (click)="clearChat()">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  </div>
+  
+  <div class="messages-container">
+    <div class="message" *ngFor="let msg of messages"
+         [ngClass]="msg.sender === 'bot' ? 'bot-message' : 'user-message'">
+      <div class="content">{{ msg.content }}</div>
+      <div class="timestamp">{{ msg.timestamp | date:'shortTime' }}</div>
+    </div>
+  </div>
+  
+  <div class="input-area">
+    <input type="text" 
+           placeholder="Type a message..." 
+           [(ngModel)]="newMessage"
+           (keyup.enter)="sendMessage()">
+    <button (click)="sendMessage()" [disabled]="!newMessage.trim()">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
