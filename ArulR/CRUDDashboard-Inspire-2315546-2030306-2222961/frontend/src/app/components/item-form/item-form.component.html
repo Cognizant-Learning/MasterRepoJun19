@@ -1,0 +1,87 @@
+<div class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Edit' : 'Add New' }} Item</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+        <div class="form-layout">
+          <div class="form-fields">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="itemForm.get('name')?.errors?.['required']">Name is required</mat-error>
+              <mat-error *ngIf="itemForm.get('name')?.errors?.['maxlength']">Name must be at most 100 characters</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>SKU</mat-label>
+              <input matInput formControlName="sku" required>
+              <mat-error *ngIf="itemForm.get('sku')?.errors?.['required']">SKU is required</mat-error>
+              <mat-error *ngIf="itemForm.get('sku')?.errors?.['maxlength']">SKU must be at most 50 characters</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category" required>
+                <mat-option *ngFor="let category of categories" [value]="category">
+                  {{ category }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="itemForm.get('category')?.errors?.['required']">Category is required</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Price</mat-label>
+              <input matInput type="number" formControlName="price" min="0" step="0.01" required>
+              <span matTextPrefix>$&nbsp;</span>
+              <mat-error *ngIf="itemForm.get('price')?.errors?.['required']">Price is required</mat-error>
+              <mat-error *ngIf="itemForm.get('price')?.errors?.['min']">Price must be greater than or equal to 0</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input matInput type="number" formControlName="quantity" min="0" step="1" required>
+              <mat-error *ngIf="itemForm.get('quantity')?.errors?.['required']">Quantity is required</mat-error>
+              <mat-error *ngIf="itemForm.get('quantity')?.errors?.['min']">Quantity must be greater than or equal to 0</mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="image-upload">
+            <div class="image-preview" *ngIf="imagePreviewUrl">
+              <img [src]="imagePreviewUrl" alt="Product image preview">
+              <button mat-icon-button color="warn" type="button" (click)="clearImage()" class="clear-image">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+
+            <div class="upload-placeholder" *ngIf="!imagePreviewUrl">
+              <mat-icon>add_photo_alternate</mat-icon>
+              <p>Add Product Image</p>
+              <p class="hint">(Max 2MB, JPG or PNG only)</p>
+            </div>
+            
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/jpeg, image/png" style="display: none;">
+            
+            <button mat-stroked-button type="button" color="primary" (click)="fileInput.click()">
+              <mat-icon>cloud_upload</mat-icon> 
+              {{ imagePreviewUrl ? 'Change Image' : 'Upload Image' }}
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button mat-button type="button" routerLink="/dashboard">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="itemForm.invalid">
+            {{ isEditMode ? 'Update' : 'Create' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<div class="activity-log-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="30"></mat-spinner>
+  </div>
+  
+  <mat-list *ngIf="!isLoading">
+    <ng-container *ngIf="activityLogs.length > 0; else noActivities">
+      <mat-list-item *ngFor="let log of activityLogs">
+        <mat-icon matListItemIcon>history</mat-icon>
+        <div matListItemTitle>{{ log.action }}</div>
+        <div matListItemLine>{{ formatDate(log.timestamp) }}</div>
+      </mat-list-item>
+    </ng-container>
+    
+    <ng-template #noActivities>
+      <div class="no-activities">
+        <mat-icon>info</mat-icon>
+        <p>No recent activities</p>
+      </div>
+    </ng-template>
+  </mat-list>
+</div>
