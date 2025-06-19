@@ -1,0 +1,6 @@
+{
+  "validCreditAmount": 100.50,
+  "validDebitAmount": 50.25,
+  "insufficientFundsAmount": 2000,
+  "invalidAmount": -10
+}

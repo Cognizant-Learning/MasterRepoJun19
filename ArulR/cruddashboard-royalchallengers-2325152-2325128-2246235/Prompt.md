@@ -30,3 +30,18 @@ Verifying the remote URL with git remote -v
 Setting the correct remote URL if needed
 Using git add ., git commit -m "message", and git push origin main
 If authentication fails, use a personal access token or SSH key."
+
+
+Design instructuctions:
+
+Heder color should be aligned with table colors
+
+Prompt for testing :-
+
+1. Asked Co-pilot to explain application code. 
+2. Asked use cases to test the application
+3. Asked co pilot for basic framework set up. 
+    - npm init playwright@latest
+    - agent - install allure. 
+    - asked to craete a base page that contains page initialization and testinfo (for logger)
+    - agent - asked copilot to implement logger that takes screenshot for every action/step
