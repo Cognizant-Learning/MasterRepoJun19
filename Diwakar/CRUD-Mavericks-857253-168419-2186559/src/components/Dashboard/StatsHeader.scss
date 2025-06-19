@@ -1,0 +1,52 @@
+.stats-header {
+  margin-bottom: 24px;
+
+  .stat-card {
+    padding: 24px;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .icon {
+      font-size: 48px;
+    }
+
+    .stat-text {
+      h4 {
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .MuiTypography-subtitle1 {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    &.total {
+      .icon {
+        color: #2196f3;
+      }
+    }
+
+    &.warning {
+      .icon {
+        color: #ff9800;
+      }
+    }
+
+    &.danger {
+      .icon {
+        color: #f44336;
+      }
+    }
+  }
+}
