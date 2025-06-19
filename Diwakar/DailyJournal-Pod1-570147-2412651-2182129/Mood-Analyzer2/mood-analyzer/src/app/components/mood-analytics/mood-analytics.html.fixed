@@ -1,0 +1,86 @@
+<!-- filepath: c:\Users\Administrator\Mood-Analyzer\mood-analyzer\src\app\components\mood-analytics\mood-analytics.html -->
+<div class="mood-analytics-container">
+  <div class="header">
+    <h2>Mood Analytics</h2>
+    <button routerLink="/journal">Back to Journal</button>
+  </div>
+
+  <div *ngIf="journalEntries.length > 0; else noData">
+    <div class="time-period-controls">
+      <p>View data for:</p>
+      <div class="time-buttons">
+        <button 
+          *ngFor="let period of timePeriods" 
+          [class.active]="selectedTimePeriod === period"
+          (click)="onTimePeriodChange(period)"
+        >
+          {{ period | titlecase }}
+        </button>
+      </div>
+    </div>
+
+    <div class="charts-container">
+      <div class="chart-box mood-distribution">
+        <h3>Mood Distribution</h3>
+        <canvas baseChart
+          [data]="moodDistributionData"
+          [options]="moodDistributionOptions"
+          [type]="doughnutChartType">
+        </canvas>
+        <div class="chart-legend">
+          <p>This chart shows the frequency of each recorded mood.</p>
+        </div>
+      </div>
+
+      <div class="chart-box mood-trend">
+        <h3>Mood Over Time</h3>
+        <canvas baseChart
+          [data]="moodTrendData"
+          [options]="moodTrendOptions"
+          [type]="lineChartType">
+        </canvas>
+        <div class="chart-legend">
+          <p>This chart tracks how your mood has changed over time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mood-insight">
+      <h3>Mood Insights</h3>
+      <p>{{ getMoodTrendAnalysis() }}</p>
+      <div class="tips" *ngIf="journalEntries.length >= 3">
+        <h4>Suggestions based on your mood patterns:</h4>
+        <ul>
+          <li>Notice patterns in your mood fluctuations</li>
+          <li>Reflect on activities or events that influence your mood</li>
+          <li>Use this data to identify what brings you joy or what causes stress</li>
+        </ul>
+      </div>
+      <div class="mood-summary" *ngIf="journalEntries.length >= 5">
+        <h4>Your Mood Summary</h4>
+        <div class="summary-stats">
+          <div class="stat-card">
+            <span class="stat-number">{{ getMostFrequentMood() }}</span>
+            <span class="stat-label">Most Frequent Mood</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">{{ journalEntries.length }}</span>
+            <span class="stat-label">Total Entries</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">{{ getMoodConsistency() }}%</span>
+            <span class="stat-label">Mood Consistency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data">
+      <p>You haven't recorded any journal entries yet.</p>
+      <p>Start tracking your mood to see analytics and insights!</p>
+      <button routerLink="/journal/new">Create Your First Entry</button>
+    </div>
+  </ng-template>
+</div>
