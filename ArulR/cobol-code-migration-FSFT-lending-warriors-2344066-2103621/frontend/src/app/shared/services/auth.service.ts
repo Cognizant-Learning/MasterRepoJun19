@@ -54,10 +54,10 @@ export class AuthService {
     console.log('Using mock authentication');
     
     // For demo purposes, accept any username/password where password is not empty
-    if (loginRequest.username && loginRequest.password) {
-      // Create a mock JWT response
+    if (loginRequest.username && loginRequest.password) {      // Create a mock JWT response
       const mockResponse: JwtResponse = {
         token: 'mock-jwt-token-' + Math.random().toString(36).substring(2),
+        type: 'Bearer',
         id: 1,
         username: loginRequest.username,
         email: `${loginRequest.username}@example.com`,
@@ -79,11 +79,16 @@ export class AuthService {
     } else {
       return throwError(() => new Error('Login failed. Please provide username and password.'));
     }
-  }
-  logout(): Observable<any> {
+  }  logout(): Observable<any> {
     // First clear the session locally to prevent UI issues
     const token = this.getToken();
     this.clearSession();
+    
+    // For mock auth, just return completed observable
+    if (environment.useMockAuth) {
+      console.log('Mock logout successful');
+      return of(null);
+    }
     
     // Only make the logout API call if we had a token
     if (token) {
