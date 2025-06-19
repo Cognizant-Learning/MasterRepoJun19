@@ -93,6 +93,12 @@ th {
 tr:last-child td {
   border-bottom: none;
 }
+tr.low-stock-row {
+  background: #fffbe6 !important;
+}
+tr.out-of-stock-row {
+  background: #ffeaea !important;
+}
 
 .action-buttons {
   display: flex;
@@ -147,8 +153,8 @@ tr:last-child td {
 }
 
 .search-bar {
-  width: 100%;
-  max-width: 350px;
+  width: 80%;
+  max-width: none;
   margin: 0 auto 1.2rem auto;
   display: block;
   padding: 0.7rem 1.1rem;
@@ -198,6 +204,109 @@ tr:last-child td {
   font-weight: bold;
 }
 
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.header-card {
+  background: #f6f8fa;
+  border-radius: 0.7rem;
+  box-shadow: 0 2px 8px rgba(0,150,57,0.06);
+  padding: 1.1rem 2.2rem 1.1rem 1.5rem;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 6px solid #009639;
+}
+.header-card.low-stock {
+  border-left-color: #ffb300;
+}
+.header-card.out-stock {
+  border-left-color: #e53935;
+}
+.header-label {
+  font-size: 1.02rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+.header-value {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: -1px;
+}
+.table-toolbar-row {
+    display: flex;
+    width: 100%;
+}
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #007A33 0%, #009639 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.98rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  min-width: 80px;
+  height: 42px;
+}
+.download-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.download-btn:hover {
+  background: linear-gradient(90deg, #009639 0%, #007A33 100%);
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.bulk-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 0.5rem 0;
+  background: #fffbe6;
+  border: 1px solid #ffb300;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #7a5a00;
+  justify-content: flex-start;
+}
+.bulk-delete-btn {
+  background: linear-gradient(90deg, #009639 0%, #007A33 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 1.02rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0,150,57,0.08);
+}
+.bulk-delete-btn:hover {
+  background: linear-gradient(90deg, #007A33 0%, #009639 100%);
+}
+
 @media (max-width: 700px) {
   .dashboard {
     padding: 1rem 0.5rem;
@@ -214,5 +323,15 @@ tr:last-child td {
   .action-buttons button {
     min-width: 60px;
     font-size: 0.93rem;
+  }
+  .inventory-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+  .header-card {
+    min-width: 0;
+    width: 100%;
+    align-items: flex-start;
   }
 }
