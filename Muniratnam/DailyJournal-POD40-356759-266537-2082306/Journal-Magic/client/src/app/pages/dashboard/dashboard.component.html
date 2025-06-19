@@ -1,0 +1,98 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <h1>{{ getGreeting() }}, {{ currentUser?.firstName || 'There' }}!</h1>
+    <p class="welcome-message">Track your mood and journal entries with Journal Magic</p>
+    
+    <div class="quick-actions">
+      <button class="btn-primary new-entry-btn" routerLink="/journal/new">
+        <i class="fas fa-plus-circle"></i> New Journal Entry
+      </button>
+    </div>
+  </div>
+  
+  <div class="dashboard-content">
+    <div class="dashboard-grid">
+      <!-- Recent entries section -->
+      <div class="card recent-entries">
+        <div class="card-header">
+          <h2>Recent Entries</h2>
+          <a routerLink="/journal" class="view-all">View All</a>
+        </div>
+        
+        <div class="card-body">
+          <div *ngIf="loading.entries" class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading entries...</p>
+          </div>
+          
+          <div *ngIf="!loading.entries && recentEntries.length === 0" class="no-entries">
+            <i class="fas fa-book-open empty-icon"></i>
+            <p>No journal entries yet</p>
+            <button class="btn-secondary" routerLink="/journal/new">Start Journaling</button>
+          </div>
+          
+          <ul *ngIf="!loading.entries && recentEntries.length > 0" class="entries-list">
+            <li *ngFor="let entry of recentEntries" class="entry-item">
+              <a [routerLink]="['/journal', entry.id]" class="entry-link">
+                <span class="entry-date">{{ formatEntryDate(entry.createdAt) }}</span>
+                <span class="entry-title">{{ entry.title }}</span>
+                <span class="entry-mood">{{ entry.moodEmoji }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Mood visualization section -->
+      <div class="card mood-analysis">
+        <div class="card-header">
+          <h2>Your Mood</h2>
+        </div>
+        
+        <div class="card-body">
+          <app-mood-visualization [timeframe]="moodTimeframe"></app-mood-visualization>
+        </div>
+      </div>
+      
+      <!-- Quick tips section -->
+      <div class="card quick-tips">
+        <div class="card-header">
+          <h2>Tips for Journaling</h2>
+        </div>
+        
+        <div class="card-body">
+          <ul class="tips-list">
+            <li>
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Make it a habit</h4>
+                <p>Try to journal at the same time each day to build a consistent routine</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-heart"></i>
+              <div>
+                <h4>Be honest</h4>
+                <p>Your journal is private - express your true thoughts and feelings</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-search"></i>
+              <div>
+                <h4>Reflect</h4>
+                <p>Look for patterns in your mood and activities to gain insights</p>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-lightbulb"></i>
+              <div>
+                <h4>Use prompts</h4>
+                <p>If you're stuck, try answering a specific question about your day</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
