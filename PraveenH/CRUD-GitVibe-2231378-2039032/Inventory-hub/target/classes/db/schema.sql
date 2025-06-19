@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS inventory_items (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    sku VARCHAR(255) NOT NULL UNIQUE,
+    category VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
+    quantity INT NOT NULL CHECK (quantity >= 0),
+    image_url VARCHAR(255),
+    low_stock_threshold INT DEFAULT 10,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

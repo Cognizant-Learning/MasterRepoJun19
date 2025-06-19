@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Wireless Mouse",
+        "sku": "WM-001",
+        "category": "Computer Accessories",
+        "price": 29.99,
+        "quantity": 50,
+        "imageUrl": "https://example.com/images/wireless-mouse.jpg",
+        "lowStockThreshold": 15
+    },
+    {
+        "name": "Mechanical Keyboard",
+        "sku": "KB-002",
+        "category": "Computer Accessories",
+        "price": 89.99,
+        "quantity": 30,
+        "imageUrl": "https://example.com/images/mechanical-keyboard.jpg",
+        "lowStockThreshold": 8
+    },
+    {
+        "name": "4K Monitor",
+        "sku": "MON-003",
+        "category": "Displays",
+        "price": 399.99,
+        "quantity": 15,
+        "imageUrl": "https://example.com/images/4k-monitor.jpg",
+        "lowStockThreshold": 5
+    },
+    {
+        "name": "Gaming Headset",
+        "sku": "HS-004",
+        "category": "Audio Devices",
+        "price": 79.99,
+        "quantity": 40,
+        "imageUrl": "https://example.com/images/gaming-headset.jpg",
+        "lowStockThreshold": 12
+    },
+    {
+        "name": "USB-C Dock",
+        "sku": "DOCK-005",
+        "category": "Computer Accessories",
+        "price": 149.99,
+        "quantity": 25,
+        "imageUrl": "https://example.com/images/usb-c-dock.jpg",
+        "lowStockThreshold": 7
+    },
+    {
+        "name": "Wireless Charger",
+        "sku": "CHG-006",
+        "category": "Mobile Accessories",
+        "price": 34.99,
+        "quantity": 60,
+        "imageUrl": "https://example.com/images/wireless-charger.jpg",
+        "lowStockThreshold": 20
+    }
+]

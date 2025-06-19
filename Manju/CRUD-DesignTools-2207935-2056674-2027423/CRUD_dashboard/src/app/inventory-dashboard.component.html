@@ -1,0 +1,79 @@
+<div class="dashboard">
+  <h2>Inventory Dashboard</h2>
+  <input type="text" class="search-bar" [(ngModel)]="searchTerm" placeholder="Search by name..." />
+  <form (ngSubmit)="addItem()" #itemForm="ngForm">
+    <input type="text" [(ngModel)]="newItem.name" name="name" placeholder="Item Name" required
+      [ngClass]="{'invalid': nameTouched && !newItem.name}" />
+    <input type="number" [(ngModel)]="newItem.quantity" name="quantity" placeholder="Quantity" required min="1"
+      [ngClass]="{'invalid': quantityTouched && newItem.quantity < 1}" />
+    <button type="submit">Add Item</button>
+  </form>
+  <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+  <table *ngIf="pagedItems.length > 0">
+    <thead>
+      <tr>
+        <th (click)="setSort('name')" class="sortable">
+          Name
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'name' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'name' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th (click)="setSort('quantity')" class="sortable">
+          Quantity
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'quantity' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'quantity' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th (click)="setSort('status')" class="sortable">
+          Status
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'status' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'status' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pagedItems; let i = index">
+        <ng-container *ngIf="editingIndex === (i + (currentPage - 1) * itemsPerPage); else viewRow">
+          <td><input type="text" [(ngModel)]="editItem.name" name="editName{{i}}" required /></td>
+          <td><input type="number" [(ngModel)]="editItem.quantity" name="editQuantity{{i}}" required min="0" /></td>
+          <td>{{ editItem.quantity === 0 ? 'Out of Stock' : (editItem.quantity < 5 ? 'Low Stock' : 'In Stock') }}</td>
+          <td class="action-buttons">
+            <button (click)="saveEdit()">Update</button>
+            <button (click)="cancelEdit()">Cancel</button>
+          </td>
+        </ng-container>
+        <ng-template #viewRow>
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.status }}</td>
+          <td class="action-buttons">
+            <button (click)="startEdit(i + (currentPage - 1) * itemsPerPage)">Edit</button>
+            <button *ngIf="editingIndex !== (i + (currentPage - 1) * itemsPerPage)" (click)="deleteItem(i + (currentPage - 1) * itemsPerPage)">Delete</button>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="pagedItems.length === 0 && filteredItems.length > 0" class="no-results">No items on this page.</div>
+  <div *ngIf="filteredItems.length === 0" class="no-results">No items match your search.</div>
+
+  <nav *ngIf="totalPages > 1" class="pagination-nav">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPages); let p = index" [class.active]="currentPage === (p + 1)">
+        <button class="page-link" (click)="setPage(p + 1)">{{ p + 1 }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>
