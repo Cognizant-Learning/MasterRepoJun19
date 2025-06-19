@@ -1,34 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-@import './theme.scss';
+@use './theme-new.scss';
 
 html, body { height: 100%; }
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif; 
-  background-color: #e0f2e0; /* Light green background */
-  color: #000000; /* Black text */
+  background-color: var(--background-color); 
+  color: var(--text-color); 
 }
 
 /* Apply the theme colors to Angular Material components */
-.mat-card,
+.mat-mdc-card,
 .mat-table,
-.mat-toolbar {
-  background-color: #f0f8f0 !important; /* Slightly different light green for components */
-  color: #000000 !important; /* Black text */
+.mat-mdc-table,
+.mat-mdc-toolbar {
+  background-color: var(--card-background) !important; 
+  color: var(--text-color) !important; 
 }
 
 /* Style Material buttons */
 .mat-mdc-raised-button.mat-primary,
 .mat-mdc-fab.mat-primary,
 .mat-mdc-mini-fab.mat-primary {
-  background-color: #66bb6a !important;
-  color: #000000 !important;
+  background-color: var(--primary-color) !important;
+  color: var(--text-color) !important;
 }
 
 .mat-mdc-button.mat-primary,
 .mat-mdc-outlined-button.mat-primary,
 .mat-mdc-icon-button.mat-primary {
-  color: #388e3c !important;
+  color: var(--primary-darker-color) !important;
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
@@ -36,16 +37,36 @@ body {
 }
 
 .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: #388e3c !important;
+  color: var(--primary-darker-color) !important;
 }
 
 /* Custom pagination style */
 .mat-mdc-paginator {
-  background-color: #f0f8f0 !important;
+  background-color: var(--card-background) !important;
 }
 
 /* Make sure dialogs also use our theme */
 .mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color: #e8f5e9 !important;
-  color: #000000 !important;
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
+}
+
+/* Fix for Angular Material v20+ */
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: var(--primary-lighter-color) !important;
+}
+
+.mdc-data-table__row:nth-child(even) {
+  background-color: rgba(200, 230, 201, 0.2) !important;
+}
+
+/* Snackbar styles */
+.success-snackbar {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.error-snackbar {
+  background-color: var(--warn-color);
+  color: white;
 }
