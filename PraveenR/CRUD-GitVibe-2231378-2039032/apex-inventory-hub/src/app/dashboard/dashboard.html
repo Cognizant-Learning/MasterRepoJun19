@@ -1,0 +1,8 @@
+<mat-card class="dashboard-card">
+  <h2><mat-icon color="primary">dashboard</mat-icon> Inventory Dashboard</h2>
+  <div class="stats">
+      <mat-chip color="primary" selected>Total Unique Items: <strong>{{ total }}</strong></mat-chip>
+      <mat-chip color="accent" selected>Low Stock (&lt; 10): <strong>{{ lowStock }}</strong></mat-chip>
+      <mat-chip color="warn" selected>Out of Stock: <strong>{{ outOfStock }}</strong></mat-chip>
+  </div>
+</mat-card>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Failed suite [Surefire suite]" verbose="0">
+  <test thread-count="1" name="Surefire test(failed)" verbose="0">
+    <classes>
+      <class name="com.dailyjournal.tests.DailyJournalSmokeTests">
+        <methods>
+          <include name="testCreateJournalEntry"/>
+          <include name="testMoodSelection"/>
+          <include name="testDeleteJournalEntry"/>
+          <include name="testFilterMoodByDate"/>
+          <include name="tearDown"/>
+          <include name="testChangeMood"/>
+          <include name="testUserRegistration"/>
+          <include name="testMobileResponsiveness"/>
+          <include name="testMoodOptions"/>
+          <include name="testUserLogout"/>
+          <include name="testViewJournalEntry"/>
+          <include name="testViewMoodTrends"/>
+          <include name="setUp"/>
+          <include name="testBrowserCompatibility"/>
+          <include name="testEditJournalEntry"/>
+          <include name="testUserLogin"/>
+          <include name="testExportMoodData"/>
+        </methods>
+      </class> <!-- com.dailyjournal.tests.DailyJournalSmokeTests -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

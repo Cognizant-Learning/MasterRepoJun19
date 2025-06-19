@@ -1,0 +1,63 @@
+{
+  "name": "banking-app",
+  "version": "0.1.0",
+  "private": true,  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.0",
+    "bootstrap": "^5.3.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.1",
+    "start-server-and-test": "^2.0.3"
+  },  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:headed": "cypress run --headed",
+    "test:e2e": "start-server-and-test start 3000 cypress:run",
+    "test:e2e:headed": "start-server-and-test start 3000 cypress:headed",
+    "test:api": "cypress run --spec \"cypress/e2e/api.cy.js\"",
+    "test:api:headed": "cypress run --headed --spec \"cypress/e2e/api.cy.js\"",
+    "test:ui": "cypress run --spec \"cypress/e2e/visual.cy.js\"",
+    "test:ui:headed": "cypress run --headed --spec \"cypress/e2e/visual.cy.js\"",
+    "test:balance": "cypress run --spec \"cypress/e2e/balance.cy.js\"",
+    "test:balance:headed": "cypress run --headed --spec \"cypress/e2e/balance.cy.js\"",
+    "test:credit": "cypress run --spec \"cypress/e2e/credit.cy.js\"",
+    "test:credit:headed": "cypress run --headed --spec \"cypress/e2e/credit.cy.js\"",    "test:debit": "cypress run --spec \"cypress/e2e/debit.cy.js\"",
+    "test:debit:headed": "cypress run --headed --spec \"cypress/e2e/debit.cy.js\"",
+    "test:workflow": "cypress run --spec \"cypress/e2e/workflow.cy.js\"",
+    "test:workflow:headed": "cypress run --headed --spec \"cypress/e2e/workflow.cy.js\"",
+    "test:edge": "cypress run --spec \"cypress/e2e/edge-cases.cy.js\"",
+    "test:edge:headed": "cypress run --headed --spec \"cypress/e2e/edge-cases.cy.js\"",
+    "test:all": "cypress run",
+    "test:all:headed": "cypress run --headed"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
