@@ -13,7 +13,10 @@
 
 ---
 
-#### Prompts/Feature Requests
+#### EXTRA feature added
+- bulk delete functionality
+- download report
+- pagination
 
 # Prompts and Feature Requests
 
@@ -72,7 +75,7 @@
 - no checkbox should be checked by default in page refresh
 - search bar width should 80%, delete selected should be same color of other buttons
 - update search functionality with name, sku and category
-
+- give some relistic names to "name"
 
 
 
