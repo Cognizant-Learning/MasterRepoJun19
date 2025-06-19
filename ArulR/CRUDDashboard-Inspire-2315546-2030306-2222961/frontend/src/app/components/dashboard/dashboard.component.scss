@@ -1,0 +1,104 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  .stats-card {
+    flex: 1;
+    text-align: center;
+    
+    &.warning {
+      .stat-value {
+        color: #ff9800;
+      }
+    }
+    
+    &.danger {
+      .stat-value {
+        color: #f44336;
+      }
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+}
+
+.chart-activity-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  
+  .chart-container {
+    flex: 2;
+  }
+  
+  .activity-container {
+    flex: 1;
+  }
+}
+
+.table-card {
+  .table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    
+    .search-field {
+      flex: 1;
+      max-width: 400px;
+    }
+    
+    .button-container {
+      display: flex;
+      gap: 10px;
+    }
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .table-container {
+    table {
+      width: 100%;
+    }
+
+    .mat-column-select {
+      width: 50px;
+      padding-right: 8px;
+    }
+
+    .mat-column-actions {
+      width: 100px;
+      text-align: center;
+    }
+    
+    .low-stock {
+      background-color: #fff3e0; // Light orange
+      font-weight: 500;
+    }
+    
+    .out-of-stock {
+      background-color: #ffebee; // Light red
+      font-weight: 700;
+      color: #d32f2f;
+    }
+  }
+}
