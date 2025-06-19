@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 46, Failures: 1, Errors: 0, Skipped: 44, Time elapsed: 9.371 s <<< FAILURE! - in TestSuite
+setUp(com.dailyjournal.tests.DailyJournalSmokeTests)  Time elapsed: 8.728 s  <<< FAILURE!
+org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 114
+Current browser version is 137.0.7151.104 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe 
+Host info: host: '2E2B87A67FEA59F', ip: '172.19.5.183'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-dev-shm-usage], extensions: []}}]}]
+	at com.dailyjournal.tests.DailyJournalSmokeTests.setUp(DailyJournalSmokeTests.java:25)
+
