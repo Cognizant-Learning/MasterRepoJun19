@@ -1,0 +1,91 @@
+<mat-card>
+  <div class="table-header">
+    <button mat-raised-button color="primary" (click)="openForm()">Add Item</button>
+    <mat-form-field>
+      <input matInput placeholder="Search" [(ngModel)]="search" (ngModelChange)="onSearchChange($event)">
+    </mat-form-field>
+    <button *ngIf="selection.size > 0" mat-raised-button color="warn" (click)="deleteSelected()">Delete Selected ({{ selection.size }})</button>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="toggleSelectAll($event)" [checked]="isAllSelected()" [indeterminate]="isIndeterminate()"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let item">
+        <mat-checkbox (change)="toggleSelection(item)" [checked]="selection.has(item.id)"></mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else displayName">
+          <input matInput [(ngModel)]="editRow.name" />
+        </ng-container>
+        <ng-template #displayName>{{item.name}}</ng-template>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="sku">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>SKU</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else displaySku">
+          <input matInput [(ngModel)]="editRow.sku" />
+        </ng-container>
+        <ng-template #displaySku>{{item.sku}}</ng-template>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else displayCategory">
+          <input matInput [(ngModel)]="editRow.category" />
+        </ng-container>
+        <ng-template #displayCategory>{{item.category}}</ng-template>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else displayPrice">
+          <input matInput type="number" [(ngModel)]="editRow.price" />
+        </ng-container>
+        <ng-template #displayPrice>{{item.price | currency}}</ng-template>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else displayQuantity">
+          <input matInput type="number" [(ngModel)]="editRow.quantity" />
+        </ng-container>
+        <ng-template #displayQuantity>{{item.quantity}}</ng-template>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let item">
+        <ng-container *ngIf="editingRowId === item.id; else actionButtons">
+          <button mat-button color="primary" (click)="saveEdit(item)">Save</button>
+          <button mat-button (click)="cancelEdit()">Cancel</button>
+        </ng-container>
+        <ng-template #actionButtons>
+          <button mat-button color="accent" (click)="openForm(item)">Edit</button>
+          <button mat-button color="warn" (click)="confirmDelete(item)">Delete</button>
+        </ng-template>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr *ngIf="addingNew" class="add-row" mat-row>
+      <td></td>
+      <td><input matInput [(ngModel)]="newRow.name" placeholder="Name" /></td>
+      <td><input matInput [(ngModel)]="newRow.sku" placeholder="SKU" /></td>
+      <td><input matInput [(ngModel)]="newRow.category" placeholder="Category" /></td>
+      <td><input matInput type="number" [(ngModel)]="newRow.price" placeholder="Price" /></td>
+      <td><input matInput type="number" [(ngModel)]="newRow.quantity" placeholder="Quantity" /></td>
+      <td>
+        <button mat-button color="primary" (click)="saveNew()">Save</button>
+        <button mat-button (click)="cancelNew()">Cancel</button>
+      </td>
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getRowClass(row)"></tr>
+  </table>
+</mat-card>
