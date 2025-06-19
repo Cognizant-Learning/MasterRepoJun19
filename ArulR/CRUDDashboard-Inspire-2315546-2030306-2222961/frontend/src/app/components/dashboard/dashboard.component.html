@@ -1,0 +1,154 @@
+<div class="dashboard-container">
+  <div class="stats-container" *ngIf="stats">
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stat-value">{{ stats.totalUniqueItems }}</div>
+        <div class="stat-label">Total Items</div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="stats-card warning">
+      <mat-card-content>
+        <div class="stat-value">{{ stats.lowStockItems }}</div>
+        <div class="stat-label">Low Stock</div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="stats-card danger">
+      <mat-card-content>
+        <div class="stat-value">{{ stats.outOfStockItems }}</div>
+        <div class="stat-label">Out of Stock</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="chart-activity-container">
+    <mat-card class="chart-container">
+      <mat-card-header>
+        <mat-card-title>Inventory by Category</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-chart [items]="dataSource.data"></app-chart>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="activity-container">
+      <mat-card-header>
+        <mat-card-title>Recent Activity</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-activity-log></app-activity-log>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-card class="table-card">
+    <mat-card-header>
+      <mat-card-title>Inventory Items</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="table-actions">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search items..." [(ngModel)]="searchText">
+          <button mat-icon-button matSuffix *ngIf="searchText" (click)="searchText=''; dataSource.filter=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        
+        <div class="button-container">
+          <button mat-raised-button color="primary" routerLink="/item/new">
+            <mat-icon>add</mat-icon> Add Item
+          </button>
+          <button mat-raised-button color="warn" [disabled]="selection.selected.length === 0" (click)="deleteSelectedItems()">
+            <mat-icon>delete</mat-icon> Delete Selected
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="!isLoading" class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let item"> {{item.name}} </td>
+          </ng-container>
+
+          <!-- SKU Column -->
+          <ng-container matColumnDef="sku">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> SKU </th>
+            <td mat-cell *matCellDef="let item"> {{item.sku}} </td>
+          </ng-container>
+
+          <!-- Category Column -->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+            <td mat-cell *matCellDef="let item"> {{item.category}} </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td mat-cell *matCellDef="let item"> {{item.price | currency}} </td>
+          </ng-container>
+
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td mat-cell *matCellDef="let item" 
+                [ngClass]="{'out-of-stock': isOutOfStock(item.quantity), 'low-stock': isLowStock(item.quantity)}">
+              {{item.quantity}}
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let item">
+              <button mat-icon-button color="primary" [routerLink]="['/item/edit', item.id]" matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteItem(item.id!)" matTooltip="Delete">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="7">No data matching the filter "{{searchText}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"
+                      showFirstLastButtons
+                      aria-label="Select page of items">
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

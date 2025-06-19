@@ -1,0 +1,17 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /dailyjournal
+spring:
+    application:
+      name: dailyjournal
+    datasource:
+      url: jdbc:mysql://localhost:3306/daily_journal
+      username: root
+      password: pass@word1
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQLDialect

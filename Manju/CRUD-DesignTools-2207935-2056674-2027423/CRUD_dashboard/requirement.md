@@ -17,6 +17,7 @@
 - bulk delete functionality
 - download report
 - pagination
+- unit test cases
 
 # Prompts and Feature Requests
 

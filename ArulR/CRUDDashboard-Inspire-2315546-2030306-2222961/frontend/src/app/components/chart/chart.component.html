@@ -1,0 +1,11 @@
+<div class="chart-container">
+  <canvas baseChart
+    [data]="chartData"
+    [options]="chartOptions"
+    [type]="'pie'">
+  </canvas>
+  
+  <div *ngIf="items.length === 0" class="no-data">
+    <p>No data available</p>
+  </div>
+</div>
