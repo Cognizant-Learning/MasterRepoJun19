@@ -3,6 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './DashBoard.css';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 function DashBoard({ items, setItems }) {
   const [search, setSearch] = useState('');
@@ -10,6 +13,8 @@ function DashBoard({ items, setItems }) {
   const [stockFilter, setStockFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [showFilterMenu, setShowFilterMenu] = useState(false);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [selectedIds, setSelectedIds] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
   const prevItemsRef = useRef(items);
@@ -75,10 +80,6 @@ function DashBoard({ items, setItems }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
-  const paginatedItems = filteredItems.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   // Dashboard stats
   const totalItems = items.length;
@@ -134,6 +135,69 @@ function DashBoard({ items, setItems }) {
     setCategoryFilter('all');
   };
 
+  const handleSort = (key) => {
+    setSortConfig((prev) => {
+      if (prev.key === key) {
+        return { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' };
+      }
+      return { key, direction: 'asc' };
+    });
+  };
+
+  const sortedItems = React.useMemo(() => {
+    if (!sortConfig.key) return filteredItems;
+    const sorted = [...filteredItems].sort((a, b) => {
+      if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
+      if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
+      return 0;
+    });
+    return sorted;
+  }, [filteredItems, sortConfig]);
+
+  const paginatedItems = sortedItems.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  function handleExportXLSX(data) {
+    const ws = XLSX.utils.json_to_sheet(data.map(({ image, ...rest }) => rest));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Inventory');
+    const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    saveAs(new Blob([wbout], { type: 'application/octet-stream' }), 'inventory.xlsx');
+  }
+
+  function getCategoryChartData(items) {
+    const map = {};
+    items.forEach(item => {
+      if (!item.category) return;
+      map[item.category] = (map[item.category] || 0) + 1;
+    });
+    return Object.entries(map).map(([name, value]) => ({ name, value }));
+  }
+
+  const categoryChartData = getCategoryChartData(items);
+  const COLORS = ['#1976d2', '#43a047', '#ffb300', '#e53935', '#8e24aa', '#00838f', '#f4511e'];
+
+  // Select all should select all filtered (not just paginated) items
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      setSelectedIds(sortedItems.map(item => item.id));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+  const handleSelectRow = (id) => {
+    setSelectedIds((prev) => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+  };
+  const handleBatchDelete = () => {
+    if (selectedIds.length === 0) return;
+    if (window.confirm(`Delete ${selectedIds.length} selected item(s)?`)) {
+      setItems(items.filter(item => !selectedIds.includes(item.id)));
+      setSelectedIds([]);
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <ToastContainer position="top-right" limit={2} />
@@ -165,6 +229,29 @@ function DashBoard({ items, setItems }) {
             {/* Removed left/right navigation buttons for auto-scroll only */}
           </div>
         </div>
+      </div>
+      <div style={{ width: '100%', maxWidth: 500, margin: '32px auto 0 auto', background: '#fff', borderRadius: 12, boxShadow: '0 2px 12px rgba(25,118,210,0.08)', padding: 24 }}>
+        <h3 style={{ textAlign: 'center', color: '#1976d2', marginBottom: 12 }}>Category Breakdown</h3>
+        <ResponsiveContainer width="100%" height={260}>
+          <PieChart>
+            <Pie
+              data={categoryChartData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={90}
+              fill="#1976d2"
+              label={({ name, value }) => `${name} (${value})`}
+            >
+              {categoryChartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
       <div className="dashboard-controls-row">
         <input
@@ -207,21 +294,37 @@ function DashBoard({ items, setItems }) {
           )}
         </div>
         <button className="create-btn" onClick={() => navigate('/create-new-item')}>Create New Item</button>
+        <button className="reset-btn" style={{marginLeft: 0}} onClick={handleBatchDelete} disabled={selectedIds.length === 0}>Batch Delete</button>
+        <button className="reset-btn" style={{marginLeft: 0}} onClick={() => handleExportXLSX(items)}>Export XLSX</button>
       </div>
       <table className="inventory-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>SKU</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th><input type="checkbox" onChange={handleSelectAll} checked={sortedItems.length > 0 && sortedItems.every(item => selectedIds.includes(item.id))} /></th>
+            <th>Image</th>
+            <th onClick={() => handleSort('name')} style={{cursor:'pointer'}}>Name {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+            <th onClick={() => handleSort('sku')} style={{cursor:'pointer'}}>SKU {sortConfig.key === 'sku' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+            <th onClick={() => handleSort('category')} style={{cursor:'pointer'}}>Category {sortConfig.key === 'category' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+            <th onClick={() => handleSort('price')} style={{cursor:'pointer'}}>Price {sortConfig.key === 'price' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+            <th onClick={() => handleSort('quantity')} style={{cursor:'pointer'}}>Quantity {sortConfig.key === 'quantity' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {paginatedItems.map(item => (
-            <tr key={item.id} className={item.quantity < 10 ? 'low-stock' : ''}>
+            <tr key={item.id} className={item.quantity === 0 ? 'out-stock' : item.quantity < 10 ? 'low-stock' : ''}>
+              <td><input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => handleSelectRow(item.id)} /></td>
+              <td>
+                {item.image ? (
+                  typeof item.image === 'string' && item.image.startsWith('data:') ? (
+                    <img src={item.image} alt={item.name} style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, border: '1px solid #eee' }} />
+                  ) : (
+                    <img src={URL.createObjectURL(item.image)} alt={item.name} style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, border: '1px solid #eee' }} />
+                  )
+                ) : (
+                  <span style={{ color: '#bbb', fontSize: 12 }}>No Image</span>
+                )}
+              </td>
               <td>{item.name}</td>
               <td>{item.sku}</td>
               <td>{item.category}</td>
