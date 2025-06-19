@@ -24,8 +24,12 @@ export class AuthService {
     this.currentUserSubject = new BehaviorSubject<User | null>(this.getUserFromStorage());
     this.currentUser = this.currentUserSubject.asObservable();
   }
-
   login(loginRequest: LoginRequest): Observable<JwtResponse> {
+    // Use mock authentication if enabled in environment
+    if (environment.useMockAuth) {
+      return this.mockLogin(loginRequest);
+    }
+    
     return this.http.post<JwtResponse>(`${this.apiUrl}/login`, loginRequest)
       .pipe(
         tap(response => {
@@ -45,18 +49,56 @@ export class AuthService {
         })
       );
   }
-
+  
+  private mockLogin(loginRequest: LoginRequest): Observable<JwtResponse> {
+    console.log('Using mock authentication');
+    
+    // For demo purposes, accept any username/password where password is not empty
+    if (loginRequest.username && loginRequest.password) {
+      // Create a mock JWT response
+      const mockResponse: JwtResponse = {
+        token: 'mock-jwt-token-' + Math.random().toString(36).substring(2),
+        id: 1,
+        username: loginRequest.username,
+        email: `${loginRequest.username}@example.com`,
+        roles: ['USER']
+      };
+      
+      // Store the mock data
+      this.saveToken(mockResponse.token);
+      this.saveUser({
+        id: mockResponse.id,
+        username: mockResponse.username,
+        email: mockResponse.email,
+        roles: mockResponse.roles
+      });
+      this.currentUserSubject.next(this.getUserFromStorage());
+      this.isLoggedInSubject.next(true);
+      
+      return of(mockResponse);
+    } else {
+      return throwError(() => new Error('Login failed. Please provide username and password.'));
+    }
+  }
   logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {})
-      .pipe(
-        tap(() => this.clearSession()),
-        catchError(error => {
-          console.error('Logout failed', error);
-          // Clear session anyway
-          this.clearSession();
-          return of(null);
-        })
-      );
+    // First clear the session locally to prevent UI issues
+    const token = this.getToken();
+    this.clearSession();
+    
+    // Only make the logout API call if we had a token
+    if (token) {
+      return this.http.post(`${this.apiUrl}/logout`, {})
+        .pipe(
+          // Session already cleared, just return
+          catchError(error => {
+            console.error('Logout failed', error);
+            return of(null);
+          })
+        );
+    } else {
+      // If no token, just return an Observable that completes
+      return of(null);
+    }
   }
 
   private clearSession(): void {

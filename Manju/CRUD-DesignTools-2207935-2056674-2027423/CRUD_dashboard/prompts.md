@@ -33,9 +33,38 @@
 - when update any inventory, update in json as well
 - add search functionality and filter at the starting of the table
 - add all prompts in the prompts.md
-- add sorting in the table
 - check if "name" exists while adding new inventory. if exists show validation msg
-- 
+- add sorting functionality to the tabl
+- sorting icon should present by default
+
+- paginate the table to show 10 items per page
+
+-A header showing Total Unique Items, Items Low on Stock, and Items Out of Stock
+- update table and json with below fields : Name, SKU, Category, Price, Quantity.
+-visually highlighted (a yellow background) if low in stock
+
+- visually highlighted (a red background) if out of stock
+- Add validation to check if inventory item exist before adding. If exist, show the validation message
+- Please make different category in sample json data
+- add a functionality download whole table in xls format
+- TS2307: Cannot find module 'xlsx' or its corresponding type declarations.
+- download button should be right top of the table with an icon
+- download Report button and seacrh bar should be in same row
+- download report button should be in same size of other buttons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

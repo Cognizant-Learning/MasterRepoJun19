@@ -1,22 +1,76 @@
 <div class="dashboard">
-  <h2>Inventory Dashboard</h2>
-  <input type="text" class="search-bar" [(ngModel)]="searchTerm" placeholder="Search by name..." />
+      <h2>Inventory Dashboard</h2>
+  <div class="inventory-header">
+    <div class="header-card">
+      <div class="header-label">Total Unique Items</div>
+      <div class="header-value">{{ totalUniqueItems }}</div>
+    </div>
+    <div class="header-card low-stock">
+      <div class="header-label">Items Low on Stock</div>
+      <div class="header-value">{{ lowStockCount }}</div>
+    </div>
+    <div class="header-card out-stock">
+      <div class="header-label">Items Out of Stock</div>
+      <div class="header-value">{{ outOfStockCount }}</div>
+    </div>
+  </div>
   <form (ngSubmit)="addItem()" #itemForm="ngForm">
     <input type="text" [(ngModel)]="newItem.name" name="name" placeholder="Item Name" required
       [ngClass]="{'invalid': nameTouched && !newItem.name}" />
-    <input type="number" [(ngModel)]="newItem.quantity" name="quantity" placeholder="Quantity" required min="1"
-      [ngClass]="{'invalid': quantityTouched && newItem.quantity < 1}" />
-    <button type="submit">Add Item</button>
+    <input type="text" [(ngModel)]="newItem.sku" name="sku" placeholder="SKU" required
+      [ngClass]="{'invalid': skuTouched && !newItem.sku}" />
+    <input type="text" [(ngModel)]="newItem.category" name="category" placeholder="Category" required
+      [ngClass]="{'invalid': categoryTouched && !newItem.category}" />
+    <input type="number" [(ngModel)]="newItem.price" name="price" placeholder="Price" required min="0" step="0.01"
+      [ngClass]="{'invalid': priceTouched && (newItem.price === null || newItem.price < 0)}" />
+    <input type="number" [(ngModel)]="newItem.quantity" name="quantity" placeholder="Quantity" required min="0"
+      [ngClass]="{'invalid': quantityTouched && (newItem.quantity === null || newItem.quantity < 0)}" />
+    <button type="submit">Add</button>
   </form>
   <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
+  <div class="table-toolbar-row">
+    <input type="text" class="search-bar" [(ngModel)]="searchTerm" placeholder="Search by name, sku and category..." />
+    <button class="download-btn" (click)="downloadAsXLS()" title="Download as XLS">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M5 20h14a1 1 0 0 0 1-1v-2a1 1 0 1 1 2 0v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2a1 1 0 1 1 2 0v2a1 1 0 0 0 1 1Zm7-4a1 1 0 0 0 1-1V7.83l3.59 3.58a1 1 0 0 0 1.41-1.41l-5.3-5.3a1 1 0 0 0-1.41 0l-5.3 5.3a1 1 0 1 0 1.41 1.41L11 7.83V15a1 1 0 0 0 1 1Z"/></svg>
+      <span>Download Report</span>
+    </button>
+  </div>
+   <div class="bulk-action-bar" *ngIf="selectedCount > 0">
+    <span>{{selectedCount}} selected</span>
+    <button class="bulk-delete-btn" (click)="confirmBulkDelete()">Delete Selected</button>
+  </div>
+
   <table *ngIf="pagedItems.length > 0">
     <thead>
       <tr>
+        <th><input type="checkbox" [(ngModel)]="allSelected" (change)="toggleSelectAll()" /></th>
         <th (click)="setSort('name')" class="sortable">
           Name
           <span class="sort-icons">
             <span [class.active-sort]="sortColumn === 'name' && sortDirection === 'asc'">▲</span>
             <span [class.active-sort]="sortColumn === 'name' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th (click)="setSort('sku')" class="sortable">
+          SKU
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'sku' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'sku' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th (click)="setSort('category')" class="sortable">
+          Category
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'category' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'category' && sortDirection === 'desc'">▼</span>
+          </span>
+        </th>
+        <th (click)="setSort('price')" class="sortable">
+          Price
+          <span class="sort-icons">
+            <span [class.active-sort]="sortColumn === 'price' && sortDirection === 'asc'">▲</span>
+            <span [class.active-sort]="sortColumn === 'price' && sortDirection === 'desc'">▼</span>
           </span>
         </th>
         <th (click)="setSort('quantity')" class="sortable">
@@ -26,22 +80,20 @@
             <span [class.active-sort]="sortColumn === 'quantity' && sortDirection === 'desc'">▼</span>
           </span>
         </th>
-        <th (click)="setSort('status')" class="sortable">
-          Status
-          <span class="sort-icons">
-            <span [class.active-sort]="sortColumn === 'status' && sortDirection === 'asc'">▲</span>
-            <span [class.active-sort]="sortColumn === 'status' && sortDirection === 'desc'">▼</span>
-          </span>
-        </th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of pagedItems; let i = index">
+      <tr *ngFor="let item of pagedItems; let i = index"
+          [class.low-stock-row]="item.quantity > 0 && item.quantity < 5"
+          [class.out-of-stock-row]="item.quantity === 0">
+        <td><input type="checkbox" [(ngModel)]="item.selected" (change)="onItemSelectChange()" /></td>
         <ng-container *ngIf="editingIndex === (i + (currentPage - 1) * itemsPerPage); else viewRow">
           <td><input type="text" [(ngModel)]="editItem.name" name="editName{{i}}" required /></td>
+          <td><input type="text" [(ngModel)]="editItem.sku" name="editSku{{i}}" required /></td>
+          <td><input type="text" [(ngModel)]="editItem.category" name="editCategory{{i}}" required /></td>
+          <td><input type="number" [(ngModel)]="editItem.price" name="editPrice{{i}}" required min="0" step="0.01" /></td>
           <td><input type="number" [(ngModel)]="editItem.quantity" name="editQuantity{{i}}" required min="0" /></td>
-          <td>{{ editItem.quantity === 0 ? 'Out of Stock' : (editItem.quantity < 5 ? 'Low Stock' : 'In Stock') }}</td>
           <td class="action-buttons">
             <button (click)="saveEdit()">Update</button>
             <button (click)="cancelEdit()">Cancel</button>
@@ -49,8 +101,10 @@
         </ng-container>
         <ng-template #viewRow>
           <td>{{ item.name }}</td>
+          <td>{{ item.sku }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.price | number:'1.2-2' }}</td>
           <td>{{ item.quantity }}</td>
-          <td>{{ item.status }}</td>
           <td class="action-buttons">
             <button (click)="startEdit(i + (currentPage - 1) * itemsPerPage)">Edit</button>
             <button *ngIf="editingIndex !== (i + (currentPage - 1) * itemsPerPage)" (click)="deleteItem(i + (currentPage - 1) * itemsPerPage)">Delete</button>
