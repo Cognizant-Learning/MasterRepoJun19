@@ -1,0 +1,119 @@
+<div class="journal-list-container">
+  <div class="page-header">
+    <h1>Journal Entries</h1>
+    
+    <div class="header-actions">
+      <div class="export-dropdown">
+        <button class="btn-secondary dropdown-toggle">
+          <i class="fas fa-download"></i> Export
+        </button>
+        <div class="dropdown-menu">
+          <a href="#" (click)="$event.preventDefault(); exportJournal('json')">Export as JSON</a>
+          <a href="#" (click)="$event.preventDefault(); exportJournal('csv')">Export as CSV</a>
+        </div>
+      </div>
+      
+      <button class="btn-primary" routerLink="/journal/new">
+        <i class="fas fa-plus"></i> New Entry
+      </button>
+    </div>
+  </div>
+  
+  <div class="journal-content">
+    <div class="filters-panel">
+      <h2>Filters</h2>
+      
+      <div class="search-box">
+        <input 
+          type="text" 
+          placeholder="Search entries..." 
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="search()">
+        <button (click)="search()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      
+      <div class="filter-section">
+        <h3>By Mood</h3>
+        <div class="mood-filters">
+          <button 
+            *ngFor="let rating of [1, 2, 3, 4, 5]"
+            [class.active]="moodFilter === rating"
+            (click)="setMoodFilter(moodFilter === rating ? null : rating)">
+            {{ getMoodEmoji(rating) }}
+          </button>
+        </div>
+      </div>
+      
+      <div class="filter-section">
+        <h3>By Month</h3>
+        <select [(ngModel)]="selectedMonth" (change)="applyFilters()">
+          <option [ngValue]="null">All Months</option>
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+      </div>
+      
+      <div class="filter-section" *ngIf="availableTags.length > 0">
+        <h3>By Tag</h3>
+        <select [(ngModel)]="tagFilter" (change)="applyFilters()">
+          <option [ngValue]="null">All Tags</option>
+          <option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</option>
+        </select>
+      </div>
+      
+      <button class="btn-secondary clear-filters" (click)="clearFilters()">
+        Clear Filters
+      </button>
+    </div>
+    
+    <div class="entries-panel">
+      <div *ngIf="loading" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading journal entries...</p>
+      </div>
+      
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+      </div>
+      
+      <div *ngIf="!loading && !error && filteredEntries.length === 0" class="no-entries">
+        <div *ngIf="journalEntries.length === 0; else noMatchingEntries">
+          <i class="fas fa-book empty-icon"></i>
+          <p>You haven't created any journal entries yet</p>
+          <button class="btn-primary" routerLink="/journal/new">Create Your First Entry</button>
+        </div>
+        
+        <ng-template #noMatchingEntries>
+          <i class="fas fa-filter empty-icon"></i>
+          <p>No entries match your current filters</p>
+          <button class="btn-secondary" (click)="clearFilters()">Clear Filters</button>
+        </ng-template>
+      </div>
+      
+      <div *ngIf="!loading && filteredEntries.length > 0" class="entries-list">
+        <div *ngFor="let entry of filteredEntries" class="entry-card">
+          <div class="entry-header">
+            <span class="entry-date">{{ formatDate(entry.createdAt) }}</span>
+            <span class="entry-mood">{{ entry.moodEmoji }}</span>
+          </div>
+          
+          <div class="entry-body">
+            <h3 class="entry-title">{{ entry.title }}</h3>
+            <p class="entry-preview">{{ entry.content.substring(0, 140) }}{{ entry.content.length > 140 ? '...' : '' }}</p>
+          </div>
+          
+          <div class="entry-footer">
+            <div class="entry-tags">
+              <span *ngFor="let tag of entry.tags" class="tag">{{ tag }}</span>
+            </div>
+            
+            <div class="entry-actions">
+              <button class="view-btn" [routerLink]="['/journal', entry.id]">Read More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
