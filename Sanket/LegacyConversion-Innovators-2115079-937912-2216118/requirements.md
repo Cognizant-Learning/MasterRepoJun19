@@ -88,7 +88,5 @@ The JavaScript application must implement all existing functions:
 
 ## 9. Enhancements (Optional)
 Consider these improvements beyond direct migration:
-- User authentication and multiple accounts
-- Transaction history and reporting
-- Modern security features
+- Transaction history with "Clear History" button
 - Responsive design for mobile use
