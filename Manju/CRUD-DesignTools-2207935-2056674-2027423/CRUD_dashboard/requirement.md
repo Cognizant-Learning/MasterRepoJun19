@@ -14,9 +14,9 @@
 ---
 
 #### EXTRA feature added
-bulk delete functionality
-download report
-pagination
+- bulk delete functionality
+- download report
+- pagination
 
 # Prompts and Feature Requests
 
