@@ -4,6 +4,42 @@ body {
     background-color: #f8f9fa;
 }
 
+/* Accessibility - Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0d6efd;
+    color: white;
+    padding: 8px;
+    z-index: 1000;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Improved focus states */
+a:focus, button:focus, input:focus, select:focus, textarea:focus,
+[tabindex]:focus {
+    outline: 3px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Screen-reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .stats-card {
     transition: all 0.3s ease;
     border-radius: 10px;
@@ -32,9 +68,37 @@ table th {
     margin: 0 5px;
 }
 
+.chart-card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.chart-card .card-header {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Theme toggle and language selector styles */
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .stats-card {
+    .stats-card, .chart-card {
         margin-bottom: 20px;
     }
 }

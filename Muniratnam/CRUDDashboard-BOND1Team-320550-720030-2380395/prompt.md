@@ -36,7 +36,72 @@ As a store manager, I want to see all my items in a central dashboard, be able t
 2. Create prompt.md to capture all the prompts used
 3. Create the application as per requirements.md make use of local sql connection with database engine 9409D70B617A56F wherever applicable
 4. Run npm install
-5. Create the database and tables as per the backend server.js
-6. This is "pure vibe coding" add few features like dark theme, fix accessibility issues
-7. Create unit test cases for the app.
-8. Add documentaion for the app created
+5. Create the database and required tables as per backend server.js
+6. Add enhanced features including dark/light theme, language conversion, and interactive dashboard based on inventory list
+7. Implement accessibility features for the CRUD Dashboard application
+
+---
+
+## Enhanced Features Prompts
+
+### Multi-Language Support Prompt
+Implement multi-language support for the dashboard with the following languages: English (default), Spanish, French, and German. Create a language selector dropdown in the header and ensure all user-facing text is properly translated.
+
+### Dark/Light Theme Prompt
+Add a theme toggle feature that allows users to switch between light and dark modes. The toggle should be visible in the header, persist the user's preference in localStorage, and apply appropriate styling for better viewing comfort in different lighting conditions.
+
+### Interactive Dashboard Prompt
+Enhance the dashboard with interactive charts that provide visual representations of:
+1. Inventory distribution by category (pie chart)
+2. Stock status overview showing healthy stock, low stock, and out-of-stock items (doughnut chart)
+
+---
+
+## Database Integration Prompts
+
+### SQL Server Integration Prompt
+Create a Node.js/Express backend server that integrates with Microsoft SQL Server (Engine ID: 9409D70B617A56F) for data persistence. Implement proper error handling, connection pooling, and API endpoints for CRUD operations.
+
+### Fallback Mechanism Prompt
+Implement a fallback mechanism that switches to browser localStorage if the SQL Server connection fails, ensuring the application remains functional even without a database connection.
+
+---
+
+## Accessibility Enhancement Prompts
+
+### Screen Reader Support Prompt
+Enhance the application with proper ARIA attributes, ensure form fields have appropriate labels, and add descriptive text for interactive elements to make the dashboard fully accessible to users relying on screen readers.
+
+### Keyboard Navigation Prompt
+Implement complete keyboard navigation support throughout the application, including:
+- Skip to main content link
+- Focus management in modal dialogs
+- Enhanced keyboard interaction for tables and forms
+- Visible focus indicators for all interactive elements
+
+### Form Accessibility Prompt
+Improve form accessibility by:
+- Adding clearer labels and descriptions
+- Implementing error handling that works with screen readers
+- Ensuring validation messages are accessible
+- Adding appropriate ARIA attributes to form elements
+
+### Chart Accessibility Prompt
+Make dashboard charts accessible by:
+- Adding text alternatives for chart data
+- Ensuring sufficient color contrast
+- Providing keyboard-accessible interactions
+- Creating hidden descriptive text for screen readers
+
+### Accessibility Testing Prompt
+Create an accessibility checker script that can be used to validate accessibility features and identify potential issues in the application.
+
+---
+
+## Documentation Prompts
+
+### README Update Prompt
+Update the README.md file to include comprehensive information about the application's features, installation instructions, usage guidelines, and accessibility features.
+
+### Accessibility Documentation Prompt
+Create a dedicated accessibility.md file that documents all accessibility features implemented in the application, including WCAG 2.1 compliance details and testing recommendations.

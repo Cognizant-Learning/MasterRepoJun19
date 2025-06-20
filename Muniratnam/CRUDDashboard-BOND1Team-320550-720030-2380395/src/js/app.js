@@ -1,8 +1,9 @@
 // Main application logic for the Inventory Dashboard
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the inventory API
+    // Initialize the inventory API and make it globally available for other modules
     const api = new InventoryAPI();
+    window.inventoryApi = api;
     
     // DOM elements
     const inventoryTable = document.getElementById('inventoryTableBody');
@@ -61,11 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const addItemModal = new bootstrap.Modal(document.getElementById('addItemModal'));
     const editItemModalBS = new bootstrap.Modal(editItemModal);
     const deleteConfirmModalBS = new bootstrap.Modal(deleteConfirmModal);
-    
-    // Load dashboard data
+      // Load dashboard data
     async function loadDashboard() {
         await loadInventoryItems();
         await updateDashboardStats();
+        
+        // Refresh charts if they're initialized
+        if (window.dashboardCharts && typeof window.dashboardCharts.refreshCharts === 'function') {
+            window.dashboardCharts.refreshCharts();
+        }
     }
     
     // Load inventory items
@@ -92,40 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to update dashboard stats:', response.error);
         }
     }
-    
-    // Render inventory table
+      // Render inventory table
     function renderInventoryTable(items) {
         inventoryTable.innerHTML = '';
         
         if (items.length === 0) {
             const row = document.createElement('tr');
+            row.setAttribute('role', 'row');
             row.innerHTML = '<td colspan="6" class="text-center">No items found</td>';
             inventoryTable.appendChild(row);
+            
+            // Announce to screen readers
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announce('No items found in inventory');
+            }
             return;
         }
         
         items.forEach(item => {
             const row = document.createElement('tr');
+            row.setAttribute('role', 'row');
             
             // Apply low stock or out of stock highlighting
             if (item.quantity === 0) {
                 row.classList.add('out-of-stock');
+                row.setAttribute('aria-description', 'This item is out of stock');
             } else if (item.quantity < CONFIG.LOW_STOCK_THRESHOLD) {
                 row.classList.add('low-stock');
+                row.setAttribute('aria-description', 'This item is low on stock');
             }
             
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.sku}</td>
                 <td>${item.category}</td>
-                <td>$${item.price.toFixed(2)}</td>
-                <td>${item.quantity}</td>
+                <td aria-label="Price: $${item.price.toFixed(2)}">$${item.price.toFixed(2)}</td>
+                <td aria-label="Quantity: ${item.quantity}">${item.quantity}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary action-btn edit-btn" data-id="${item.id}">
-                        <i class="bi bi-pencil-fill"></i> Edit
+                    <button class="btn btn-sm btn-primary action-btn edit-btn" data-id="${item.id}" aria-label="Edit ${item.name}">
+                        <i class="bi bi-pencil-fill" aria-hidden="true"></i> Edit
                     </button>
-                    <button class="btn btn-sm btn-danger action-btn delete-btn" data-id="${item.id}">
-                        <i class="bi bi-trash-fill"></i> Delete
+                    <button class="btn btn-sm btn-danger action-btn delete-btn" data-id="${item.id}" aria-label="Delete ${item.name}">
+                        <i class="bi bi-trash-fill" aria-hidden="true"></i> Delete
                     </button>
                 </td>
             `;
@@ -141,6 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', () => openDeleteConfirmation(btn.dataset.id));
         });
+        
+        // Announce updates to screen readers
+        if (window.accessibilityHelper) {
+            accessibilityHelper.announce(`${items.length} inventory items displayed`);
+        }
     }
     
     // Filter inventory based on search input
@@ -163,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
-    // Sort inventory by column
+      // Sort inventory by column
     let currentSortKey = null;
     let sortAscending = true;
     
@@ -175,6 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSortKey = sortKey;
             sortAscending = true;
         }
+        
+        // Update the aria-sort attributes of table headers
+        document.querySelectorAll('th[data-sort]').forEach(th => {
+            if (th.dataset.sort === sortKey) {
+                th.setAttribute('aria-sort', sortAscending ? 'ascending' : 'descending');
+            } else {
+                th.setAttribute('aria-sort', 'none');
+            }
+        });
         
         api.getAllItems().then(response => {
             if (response.success) {
@@ -193,6 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 renderInventoryTable(sortedItems);
+                
+                // Announce the sort change to screen readers
+                if (window.accessibilityHelper) {
+                    // Get the header text for the column
+                    const headerText = document.querySelector(`th[data-sort="${sortKey}"]`)?.textContent.trim() || sortKey;
+                    accessibilityHelper.updateSortHeaderStatus(sortKey, sortAscending);
+                }
             }
         });
     }
@@ -207,27 +240,92 @@ document.addEventListener('DOMContentLoaded', () => {
             quantity: itemQuantityInput.value
         };
         
-        // Simple validation
-        if (!newItem.name || !newItem.sku || !newItem.category || !newItem.price || !newItem.quantity) {
-            alert('Please fill in all fields');
+        // Validate and show accessible error messages
+        const form = document.getElementById('addItemForm');
+        if (!validateForm(form)) {
+            // Set focus to the first invalid field
+            form.querySelector(':invalid')?.focus();
             return;
+        }
+        
+        // Show loading state
+        if (window.accessibilityHelper) {
+            accessibilityHelper.announce('Adding new item. Please wait...', 'assertive');
         }
         
         const response = await api.createItem(newItem);
         
         if (response.success) {
             // Clear form
-            document.getElementById('addItemForm').reset();
+            form.reset();
             
             // Hide modal
             addItemModal.hide();
             
+            // Announce success to screen readers
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announceCrudOperation('create', newItem.name);
+            }
+            
             // Reload dashboard
             loadDashboard();
         } else {
-            alert('Failed to add item');
+            // Announce failure to screen readers
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announce('Failed to add item. ' + (response.error || ''), 'assertive');
+            } else {
+                alert('Failed to add item');
+            }
             console.error(response.error);
         }
+    }
+    
+    // Validate form and show accessible error messages
+    function validateForm(form) {
+        let isValid = true;
+        const invalidFields = [];
+        
+        // Check each required input
+        form.querySelectorAll('[required]').forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('is-invalid');
+                
+                // Get the field name from the label
+                const fieldName = document.querySelector(`label[for="${input.id}"]`)?.textContent || input.id;
+                invalidFields.push(fieldName);
+                
+                // Add error message for screen readers
+                const helpId = input.getAttribute('aria-describedby');
+                const helpElement = helpId ? document.getElementById(helpId) : null;
+                
+                if (helpElement) {
+                    helpElement.classList.add('text-danger');
+                    helpElement.textContent = `${fieldName} is required`;
+                }
+                
+                // Add event listener to remove error state when value changes
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                        if (helpElement) {
+                            helpElement.classList.remove('text-danger');
+                            helpElement.textContent = helpElement.getAttribute('data-original-text') || '';
+                        }
+                    }
+                }, { once: true });
+            }
+        });
+        
+        // Announce invalid fields to screen readers
+        if (!isValid && window.accessibilityHelper) {
+            accessibilityHelper.announce(
+                `Please complete the following required fields: ${invalidFields.join(', ')}`,
+                'assertive'
+            );
+        }
+        
+        return isValid;
     }
     
     // Open edit modal with item data
@@ -268,8 +366,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Simple validation
         if (!updatedItem.name || !updatedItem.sku || !updatedItem.category || isNaN(updatedItem.price) || isNaN(updatedItem.quantity)) {
-            alert('Please fill in all fields with valid values');
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announce('Please fill in all fields with valid values', 'assertive');
+            } else {
+                alert('Please fill in all fields with valid values');
+            }
             return;
+        }
+        
+        // Show loading state
+        if (window.accessibilityHelper) {
+            accessibilityHelper.announce('Updating item. Please wait...', 'polite');
         }
         
         const response = await api.updateItem(itemId, updatedItem);
@@ -278,23 +385,54 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide modal
             editItemModalBS.hide();
             
+            // Announce success
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announceCrudOperation('update', updatedItem.name);
+            }
+            
             // Reload dashboard
             loadDashboard();
         } else {
-            alert('Failed to update item');
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announce('Failed to update item. ' + (response.error || ''), 'assertive');
+            } else {
+                alert('Failed to update item');
+            }
             console.error(response.error);
         }
     }
-    
-    // Open delete confirmation modal
+      // Open delete confirmation modal
     function openDeleteConfirmation(itemId) {
         deleteItemIdInput.value = itemId;
+        
+        // Get item name for better accessibility
+        api.getAllItems().then(response => {
+            if (response.success) {
+                const item = response.data.find(item => item.id === itemId);
+                if (item) {
+                    const nameElement = document.getElementById('itemToDeleteName');
+                    if (nameElement) {
+                        nameElement.textContent = item.name;
+                    }
+                    if (window.accessibilityHelper) {
+                        accessibilityHelper.announce(`Confirm deletion of ${item.name}`, 'polite');
+                    }
+                }
+            }
+        });
+        
         deleteConfirmModalBS.show();
     }
     
     // Delete an inventory item
     async function deleteItem() {
         const itemId = deleteItemIdInput.value;
+        let itemName = document.getElementById('itemToDeleteName')?.textContent || 'item';
+        
+        // Show loading state
+        if (window.accessibilityHelper) {
+            accessibilityHelper.announce('Deleting item. Please wait...', 'polite');
+        }
         
         const response = await api.deleteItem(itemId);
         
@@ -302,10 +440,19 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide modal
             deleteConfirmModalBS.hide();
             
+            // Announce success
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announceCrudOperation('delete', itemName);
+            }
+            
             // Reload dashboard
             loadDashboard();
         } else {
-            alert('Failed to delete item');
+            if (window.accessibilityHelper) {
+                accessibilityHelper.announce('Failed to delete item. ' + (response.error || ''), 'assertive');
+            } else {
+                alert('Failed to delete item');
+            }
             console.error(response.error);
         }
     }
