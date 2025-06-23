@@ -1,0 +1,27 @@
+.dashboard-summary {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.dashboard-card {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 150px;
+  text-align: center;
+}
+.dashboard-card.warning {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+}
+.dashboard-card.danger {
+  background: #fff1f0;
+  border: 1px solid #ff7875;
+}
+.dashboard-lists {
+  display: flex;
+  gap: 2rem;
+}
+.dashboard-lists ul {
+  padding-left: 1.2rem;
+}
